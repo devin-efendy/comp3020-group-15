@@ -26,3 +26,20 @@ Running the app locally
 npm start
 ```
 If you are using yarn do `yarn start` instead.
+
+# To-Do
+
+- [ ] Components structure
+
+- [ ] Address modal
+
+- [ ] Template
+
+- [ ] List of restaurant and menu
+  - [ ] Individual restaurant and menu
+  
+- [ ] Sidebar category
+
+- [ ] Cart
+
+- [ ] Checkout page
