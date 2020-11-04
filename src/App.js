@@ -1,48 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import logo from './logo.svg';
-import './css/App.css';
+import "./css/App.css";
 
-import Header from './components/Header';
-import Cart from './components/Cart'
-import Wallet from './components/Wallet'
+import Header from "./components/Header";
+import Cart from "./components/Cart";
+import Wallet from "./components/Wallet";
+import Sidebar from "./components/Sidebar";
+import MainList from "./components/MainList";
 
-import { RestaurantStub } from './backend/RestaurantStub';
-import { DishStub } from './backend/DishStub';
+import { RestaurantStub } from "./backend/RestaurantStub";
+import { DishStub } from "./backend/DishStub";
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <Wallet />
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
-        <p>Test Scrolling</p>
+
+        <div className="Main__Container">
+          <Sidebar />
+          <MainList />
+        </div>
+
         <Cart />
       </div>
     );
