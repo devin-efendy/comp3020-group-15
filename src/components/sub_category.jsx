@@ -7,9 +7,11 @@ class SubCategory extends Component {
             color: "white",
             borderColor: "white",
             border: "2px solid",
+            width: "245px",
+            height:"100px"
         }
         return (
-            <div>
+            <React.Fragment>
                 <button type="button" className={this.props.category.btnColor}
                     id={this.props.category.id}
                     style={style}
@@ -19,7 +21,9 @@ class SubCategory extends Component {
                     }}>
                     {this.props.category.content}
                 </button>
-            </div>
+                <br/>
+            </React.Fragment>
+
         );
     }
 }

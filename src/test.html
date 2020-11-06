@@ -5,8 +5,9 @@
       .first_Div {
         border: 5px outset red;
         background-color: lightblue;
-        text-align: left;
-        width: 50%;
+        width: 49%;
+        float: left;
+        clear: none;
       }
       .second_Div {
         border: 5px outset red;
@@ -14,12 +15,14 @@
         float: right;
         width: 50%;
       }
-      .aParent div {
-        float: left;
-        clear: none;
-        width: 49%;
+      .aParent{
         border: 5px outset red;
         background-color: lightblue;
+        max-width: 20px;
+        float: left;
+        clear: none;
+        
+        
       }
       .child div {
         float: left;
@@ -29,27 +32,48 @@
         background-color: lightblue;
       }
       .border {
-        border: 10px;
+        border: 2px solid;
         border-color: red;
-        background-color: rosybrown;
+      }
+
+      div.b {
+        max-width: 200px;
+        word-wrap: break-word;
+        border: 2px solid green;
       }
     </style>
   </head>
   <body>
-      <div class="border">
-          <h1>This is header 0</h1>
-          <p>THis para belongs to header 0</p>
-      </div>
-    <div class="aParent">
-      <div>
-        <h1>This is header1</h1>
-        <p>This is para1</p>
-      </div>
-      <div>
-        <h1>This is header 2</h1>
-        <p>This is para2</p>
-      </div>
+    <div class="b">
+      <h1>Hello</h1>
+      <button>This is alongbasdjasdas</button>
+      <p>This is a paádasdasdasdragraph</p>
     </div>
+    <div>
+
+      <div class="aParent border">
+        <h1>Hello</h1>
+        <p>This is a paádasdasdasdragraph</p>
+        <button>b1</button>
+      </div>
+      <div class="aParent border">
+        <h1>Hello</h1>
+        <p>This is a paádasdasdasdragraph</p>
+      </div>
+      
+    </div>
+
+    <!--<div>
+      <div class="border first_Div">
+        <h1>This is new div</h1>
+        <p>This is new para</p>
+      </div>
+
+      <div class="border first_Div">
+        <h1>This is new div</h1>
+        <p>This is new para</p>
+      </div>
+    </div>-->
   </body>
 </html>
 

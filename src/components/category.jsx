@@ -4,8 +4,8 @@ class Category extends Component {
     //redColor = "btn btn-danger btn-outline-dark btn-lg col-md-2";
     //blackColor = "btn btn-dark btn-outline-dark btn-lg col-md-2";
     //btn-outline-dark
-    redColor = "btn btn-danger col-md-3";
-    blackColor = "btn btn-dark col-md-3";
+    redColor = "btn btn-danger";
+    blackColor = "btn btn-dark";
     state = {
         categories: [
             { id: 1, content: "Near you", btnColor: this.blackColor },
@@ -39,17 +39,18 @@ class Category extends Component {
 
     render() {
         return (
-            this.state.categories.map(category => {
-                return (
-                    <SubCategory
-                        key={category.id}
-                        category={category}
-                        onClick={this.handleClick}
-                        onColorChange={this.handleColor}
-                    />
-                );
-            })
-
+            <div>
+                {this.state.categories.map(category => {
+                    return (
+                        <SubCategory
+                            key={category.id}
+                            category={category}
+                            onClick={this.handleClick}
+                            onColorChange={this.handleColor}
+                        />
+                    );
+                })}
+            </div>
         );
     }
 }

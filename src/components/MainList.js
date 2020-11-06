@@ -20,6 +20,15 @@ class MainList extends Component {
           <li>category-6</li>
           <li>category-1</li>
           <li>category-2</li>
+          <li>category-6</li>
+          <li>category-1</li>
+          <li>category-2</li>
+          <li>category-6</li>
+          <li>category-1</li>
+          <li>category-2</li>
+          <li>category-6</li>
+          <li>category-1</li>
+          <li>category-2</li>
         </ul>
       </div>
     );

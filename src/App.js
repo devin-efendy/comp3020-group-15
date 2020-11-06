@@ -22,18 +22,27 @@ class App extends React.Component {
 
   render() {
     //added by Daniel, in progress
-    const divStyle = {
+    const categoriesStyle = {
+      border: "2px solid green",
       float: "left",
       clear: "none",
-      width: "48%",
+      width: "250px"
     };
+    const mainSection = {
+      border: "2px solid green",
+      float: "left",
+      clear: "none",
+      width: "1450px",
+    }
     return (
       <div className="App">
         <Header />
         <Wallet />
         <div className="Main__Container">
-          <div style={divStyle}>
-            <Category />
+          <div style={categoriesStyle}>
+            <Category />  
+          </div>
+          <div style={mainSection}>
             <MainList />
           </div>
           
