@@ -9,7 +9,7 @@ import Wallet from "./components/Wallet";
 import Sidebar from "./components/Sidebar";
 import MainList from "./components/MainList";
 
-import Category from "./components/category";
+import Category from "./components/Category";
 
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";

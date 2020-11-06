@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SubCategory from "./sub_category";
+import SubCategory from "./Sub_category";
 class Category extends Component {
     //redColor = "btn btn-danger btn-outline-dark btn-lg col-md-2";
     //blackColor = "btn btn-dark btn-outline-dark btn-lg col-md-2";
