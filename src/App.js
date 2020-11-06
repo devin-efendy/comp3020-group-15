@@ -27,7 +27,6 @@ class App extends React.Component {
       clear: "none",
       width: "48%",
     };
-    //////////////////
     return (
       <div className="App">
         <Header />
