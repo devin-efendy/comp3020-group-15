@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .first_Div {
+        border: 5px outset red;
+        background-color: lightblue;
+        text-align: left;
+        width: 50%;
+      }
+      .second_Div {
+        border: 5px outset red;
+        background-color: lightblue;
+        float: right;
+        width: 50%;
+      }
+      .aParent div {
+        float: left;
+        clear: none;
+        width: 49%;
+        border: 5px outset red;
+        background-color: lightblue;
+      }
+      .child div {
+        float: left;
+        clear: none;
+        width: 20%;
+        border: 5px outset red;
+        background-color: lightblue;
+      }
+      .border {
+        border: 10px;
+        border-color: red;
+        background-color: rosybrown;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="border">
+          <h1>This is header 0</h1>
+          <p>THis para belongs to header 0</p>
+      </div>
+    <div class="aParent">
+      <div>
+        <h1>This is header1</h1>
+        <p>This is para1</p>
+      </div>
+      <div>
+        <h1>This is header 2</h1>
+        <p>This is para2</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--<div>
+      <div class="first_Div">
+        <h1>This is header</h1>
+        <p>This is a para</p>
+      </div>
+      <div class="second_Div">
+        <h1>This is header</h1>
+        <p>This is a para</p>
+      </div>
+    </div>-->
+<!--<div class="aParent">
+      <div class="border">
+        <ul>
+            <li>Item1</li>
+            <li>Item1</li>
+            <li>Item1</li>
+            <li>Item1</li>
+        </ul>
+      </div>
+      <div class="border">
+        <ul>
+            <li>Item1</li>
+            <li>Item1</li>
+            <li>Item1</li>
+            <li>Item1</li>
+        </ul>
+      </div>
+    </div>
+    <button>b1</button><br>
+    <button>b2</button>-->

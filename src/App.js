@@ -9,6 +9,8 @@ import Wallet from "./components/Wallet";
 import Sidebar from "./components/Sidebar";
 import MainList from "./components/MainList";
 
+import Category from "./components/category";
+
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
 
@@ -19,14 +21,23 @@ class App extends React.Component {
   }
 
   render() {
+    //added by Daniel, in progress
+    const divStyle = {
+      float: "left",
+      clear: "none",
+      width: "48%",
+    };
+    //////////////////
     return (
       <div className="App">
         <Header />
         <Wallet />
-
         <div className="Main__Container">
-          <Sidebar />
-          <MainList />
+          <div style={divStyle}>
+            <Category />
+            <MainList />
+          </div>
+          
         </div>
 
         <Cart />
