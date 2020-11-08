@@ -1,31 +1,45 @@
-import React from 'react'
-import '../css/RestaurantsList.css'
-import RestaurantStub from '../backend/RestaurantStub';
+import React from "react";
+import "../css/RestaurantsList.css";
+import RestaurantStub from "../backend/RestaurantStub";
 
+class RestaurantsList extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-function RestaurantsList() {
+  render() {
+    const restaurantList = RestaurantStub;
+
     //formatting the restaurant boxes/info
-    const restaurantList = RestaurantStub.map(theInfo=> (
-        <div className="restaurants">
-                <div className="restaurantContainer">
-                <h2>{theInfo.restaurantName}</h2>
-                <p className="ratings">Ratings: {theInfo.review} stars</p>
-                <p className="restaurantLogo"><i class={theInfo.restaurantLogo}></i></p>
-                
-                <button>Select</button>
-                <ul>
-                    <li>Delivery time: {theInfo.deliveryTime}</li>
-                    <li>Delivery fee: ${theInfo.deliveryFee}</li>
-                </ul>
-            </div>
+    const restaurantRenderList = restaurantList.map((theInfo) => (
+      <div className="restaurants">
+        <div className="restaurantContainer">
+          <div className="restaurantLogo">
+            <i class={theInfo.restaurantLogo} />
+          </div>
+
+          <div className="restaurantGroup__Name_Ratings">
+            <h2 className="restaurantName">{theInfo.restaurantName}</h2>
+            <p className="ratings">Ratings: {theInfo.review} stars</p>
+          </div>
+
+          <div className="restaurantGroup__Time_Fee">
+            <div>Delivery time: {theInfo.deliveryTime}</div>
+            <div>Delivery fee: ${theInfo.deliveryFee}</div>
+          </div>
+
+          <div className="restaurantGroup__Button">
+            <button>Select</button>
+          </div>
         </div>
-    ))
+      </div>
+    ));
 
     return (
-        <div>
-            {restaurantList}
-        </div>
-    )
+      <div className="RestaurantList__Container">{restaurantRenderList}</div>
+    );
+  }
 }
 
 export default RestaurantsList;
