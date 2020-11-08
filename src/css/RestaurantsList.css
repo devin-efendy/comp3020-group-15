@@ -6,11 +6,12 @@
 .restaurantContainer {
     position: relative;
     overflow: hidden;
-    left: 150px;
+    left: 100px;
     margin-top: 30px;
-    width: 1000px;
+    width: 1100px;
     height: 150px;
     background: lightgray;
+    border-radius: 10px;
 }
 
 .restaurantContainer h2{
@@ -26,24 +27,26 @@
 .ratings{
     color: black;
     position: absolute;
+    font-weight: 1000;
     top: 70px;
     left: 200px;
 }
 
-.dummyLogo{
-    color: blue;
+.restaurantLogo{
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 30px;
+    
 }
 
 .restaurantContainer ul{
     color: black;
     text-align: left;
+    font-weight: 1000;
     position: absolute;
     list-style: none;
-    top: 40px;
-    right: 250px;
+    top: 70px;
+    right: 200px;
 }
 
 .restaurantContainer button{
