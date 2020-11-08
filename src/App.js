@@ -13,8 +13,6 @@ import RestaurantsList from "./components/RestaurantsList";
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
 
-import RestaurantsList from './components/RestaurantsList'
-
 class App extends React.Component {
   constructor() {
     super();
