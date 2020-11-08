@@ -12,6 +12,8 @@ import MainList from "./components/MainList";
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
 
+import RestaurantsList from './components/RestaurantsList'
+
 class App extends React.Component {
   constructor() {
     super();
@@ -26,7 +28,8 @@ class App extends React.Component {
 
         <div className="Main__Container">
           <Sidebar />
-          <MainList />
+          {/* <MainList /> */}
+          <RestaurantsList/>
         </div>
 
         <Cart />
