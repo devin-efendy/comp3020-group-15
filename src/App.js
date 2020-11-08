@@ -13,7 +13,7 @@ import Category from "./components/Category";
 
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
-
+import "./css/Category.css";
 class App extends React.Component {
   constructor() {
     super();
@@ -21,14 +21,7 @@ class App extends React.Component {
   }
 
   render() {
-    //added by Daniel, in progress
-    const categoriesStyle = {
-      border: "2px solid green",
-      float: "left",
-      clear: "none",
-      width: "250px"
-    };
-    const mainSection = {
+    const mainSection={
       border: "2px solid green",
       float: "left",
       clear: "none",
@@ -39,7 +32,7 @@ class App extends React.Component {
         <Header />
         <Wallet />
         <div className="Main__Container">
-          <div style={categoriesStyle}>
+          <div className="categories">
             <Category />  
           </div>
           <div style={mainSection}>

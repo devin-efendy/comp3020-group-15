@@ -1,20 +1,11 @@
 import React, { Component } from "react";
-
+import '../css/SubCategory.css';
 class SubCategory extends Component {
     render() {
-        const style = {
-            fontSize: "40px",
-            color: "white",
-            borderColor: "white",
-            border: "2px solid",
-            width: "245px",
-            height:"100px"
-        }
         return (
             <React.Fragment>
-                <button type="button" className={this.props.category.btnColor}
-                    id={this.props.category.id}
-                    style={style}
+                <button type="button" className={"buttonStyle"+" "+this.props.category.btnColor}
+                    id={this.props.category.id}         
                     onClick={() => {
                         this.props.onClick(this.props.category.content);
                         this.props.onColorChange(this.props.category.id);

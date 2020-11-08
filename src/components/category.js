@@ -1,20 +1,17 @@
 import React, { Component } from "react";
-import SubCategory from "./Sub_category";
+import SubCategory from "./SubCategory";
 class Category extends Component {
-    //redColor = "btn btn-danger btn-outline-dark btn-lg col-md-2";
-    //blackColor = "btn btn-dark btn-outline-dark btn-lg col-md-2";
-    //btn-outline-dark
     redColor = "btn btn-danger";
     blackColor = "btn btn-dark";
     state = {
         categories: [
-            { id: 1, content: "Near you", btnColor: this.blackColor },
-            { id: 2, content: "Pizza", btnColor: this.blackColor },
-            { id: 3, content: "Chicken", btnColor: this.blackColor },
-            { id: 4, content: "Burgers", btnColor: this.blackColor },
-            { id: 5, content: "Sushi", btnColor: this.blackColor },
-            { id: 6, content: "Wings", btnColor: this.blackColor },
-            { id: 7, content: "Chinese", btnColor: this.blackColor }
+            { id: 1, content: "Near you", btnColor: this.redColor },
+            { id: 2, content: "Pizza", btnColor: this.redColor },
+            { id: 3, content: "Chicken", btnColor: this.redColor },
+            { id: 4, content: "Burgers", btnColor: this.redColor },
+            { id: 5, content: "Sushi", btnColor: this.redColor },
+            { id: 6, content: "Wings", btnColor: this.redColor },
+            { id: 7, content: "Chinese", btnColor: this.redColor }
         ],
     };
 
@@ -27,13 +24,13 @@ class Category extends Component {
     handleColor = (id) => {
         const resetColor = () => {
             const categories = [...this.state.categories];
-            categories.map(category => category.btnColor = this.blackColor);
+            categories.map(category => category.btnColor = this.redColor);
             this.setState({ categories: categories });
         }
         resetColor();
         const categories = [...this.state.categories];
         //we changed the specific id button
-        categories[id - 1].btnColor = this.redColor;
+        categories[id - 1].btnColor = this.blackColor;
         this.setState({ categories: categories });
     }
 
