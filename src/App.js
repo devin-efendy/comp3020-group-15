@@ -8,6 +8,7 @@ import Cart from "./components/Cart";
 import Wallet from "./components/Wallet";
 import Sidebar from "./components/Sidebar";
 import MainList from "./components/MainList";
+import RestaurantsList from "./components/RestaurantsList";
 
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
@@ -26,7 +27,8 @@ class App extends React.Component {
 
         <div className="Main__Container">
           <Sidebar />
-          <MainList />
+          {/* <MainList /> */}
+          <RestaurantsList/>
         </div>
 
         <Cart />
