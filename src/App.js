@@ -8,6 +8,7 @@ import Cart from "./components/Cart";
 import Wallet from "./components/Wallet";
 import Sidebar from "./components/Sidebar";
 import MainList from "./components/MainList";
+import RestaurantsList from "./components/RestaurantsList";
 
 import Category from "./components/Category";
 
@@ -39,6 +40,9 @@ class App extends React.Component {
             <MainList />
           </div>
           
+          <Sidebar />
+          {/* <MainList /> */}
+          <RestaurantsList/>
         </div>
 
         <Cart />

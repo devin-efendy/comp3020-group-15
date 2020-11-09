@@ -1,12 +1,25 @@
-export const RestaurantStub = [
-    {
-        restaurantName: "restaurant-name",
-        restaurantLogo: "../asset/restaurant/logo.jpg",
-        deliveryTime: "hh hours mm minutes",
-        deliveryFee: 5.0,
-        review: 5
-    },
-    {
+const RestaurantStub = [
+  {
+    restaurantName: "Nearby You Restaurant",
+    restaurantLogo: "fas fa-pizza-slice fa-5x",
+    deliveryTime: "10 mins.",
+    deliveryFee: 5.0,
+    review: 3,
+  },
+  {
+    restaurantName: "Close By",
+    restaurantLogo: "fas fa-hamburger fa-5x",
+    deliveryTime: "1 hours",
+    deliveryFee: 3.0,
+    review: 5,
+  },
+  {
+    restaurantName: "Another Nearby",
+    restaurantLogo: "fas fa-hotdog fa-5x",
+    deliveryTime: "13 mins.",
+    deliveryFee: 4.0,
+    review: 4,
+  },
+];
 
-    }
-]
+export default RestaurantStub;
