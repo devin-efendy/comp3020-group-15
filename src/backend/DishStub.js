@@ -7,7 +7,8 @@ export const DishStub = [
         description: "Get both signature Pizza-Pizza dishes for one great price. Comes with one" + 
             "Bacon Cheeseburger Pizza and one Canadian Pizza.",
         review: 5.0,
-        price: 20.0
+        price: 20.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Combo",
@@ -16,7 +17,8 @@ export const DishStub = [
         description: "Get both Pizza-Pizza appetizers in one big dish. Comes with one order of" + 
             "Jalapeno Poppers and one order of Deep-Fried Pickles.",
         review: 5.0,
-        price: 10.0
+        price: 10.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Appetizer",
@@ -24,7 +26,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "8 delicious spicy Jalapeno Poppers stuffed with a creamy cheese filling.",
         review: 4.0,
-        price: 6.0
+        price: 6.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Appetizer",
@@ -32,7 +35,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "10 classic Deep-Fried Pickles to go with your pizza.",
         review: 4.0,
-        price: 6.0
+        price: 6.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Entree",
@@ -40,7 +44,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Two food classics mashed together in a pizza topped with ground beef, bacon and a four-cheese blend.",
         review: 5.0,
-        price: 15.0
+        price: 15.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Entree",
@@ -48,7 +53,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Pepperoni, mushrooms and bacon, all on top of our 100% Canadian mozzarella cheese.",
         review: 3.0,
-        price: 15.0
+        price: 15.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Dessert",
@@ -56,7 +62,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Strips of funnel cake topped with sugar and cinnamon.",
         review: 3.0,
-        price: 6.0
+        price: 6.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Dessert",
@@ -64,7 +71,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "A classic brownie for all the chocolate lovers.",
         review: 5.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Drink",
@@ -72,7 +80,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "591 mL bottle of Dasani Water.",
         review: 3.0,
-        price: 2.0
+        price: 2.0,
+        restaurantName: "Pizza Pizza",
     },
     {
         category: "Drink",
@@ -80,7 +89,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Choose from a variety of 500 mL soda bottles.",
         review: 4.0,
-        price: 3.0
+        price: 3.0,
+        restaurantName: "Pizza Pizza",
     },
     //Pizza Hut Dishes
     {
@@ -89,7 +99,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "The classic pizza dinner, comes with one Supreme Pizza and one basket of our signature Breadsticks.",
         review: 5.0,
-        price: 17.0
+        price: 17.0,
+        restaurantName: "Pizza Hut",
     },
     {
         category: "Combo",
@@ -98,7 +109,8 @@ export const DishStub = [
         description: "If you can't decide on what kind of bread to get, why not get both? Comes with one big basket filled" +
             "with our signature breadsticks and garlic bread.",
         review: 5.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Pizza Hut",
     },
     {
         category: "Appetizer",
@@ -106,7 +118,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "A basket of our signature breadsticks.",
         review: 4.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Pizza Hut",
     },
     {
         category: "Appetizer",
@@ -114,7 +127,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Thick pieces of toast brushed with a buttery garlic spread.",
         review: 4.0,
-        price: 4.0
+        price: 4.0,
+        restaurantName: "Pizza Hut",
     },
     {
         category: "Entree",
@@ -122,7 +136,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with all the toppings you need, from sausage and pepperoni to onions and peppers.",
         review: 4.0,
-        price: 15.0
+        price: 15.0,
+        restaurantName: "Pizza Hut",
     },
     {
         category: "Entree",
@@ -130,7 +145,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "BBQ sauce and aged cheddar topped with chicken breast, red onions and green peppers.",
         review: 5.0,
-        price: 15.0
+        price: 15.0,
+        restaurantName: "Pizza Hut",
     },
     {
         category: "Dessert",
@@ -138,7 +154,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "10 delicious two-bite cinnamon rolls with cream cheese icing.",
         review: 4.0,
-        price: 8.0
+        price: 8.0,
+        restaurantName: "Pizza Hut",
     },
     {
         category: "Dessert",
@@ -146,7 +163,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "The ultimate chocolate chip cookie cut into 8 slices for the whole family.",
         review: 5.0,
-        price: 8.0
+        price: 8.0,
+        restaurantName: "Pizza Hut",
     },
     //Edo Japan Dishes
     {
@@ -155,7 +173,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with 3 pieces each of California Rolls, Dynamite Rolls and Salmon Nigiri.",
         review: 5.0,
-        price: 13.0
+        price: 13.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Combo",
@@ -163,7 +182,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "No raw fish here. Comes with 5 pieces each of California Rolls and Dynamite Rolls.",
         review: 4.0,
-        price: 13.0
+        price: 13.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Appetizer",
@@ -171,7 +191,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Fresh shrimp coated in our tempura batter and fried to perfection.",
         review: 4.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Appetizer",
@@ -179,7 +200,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Delicious chopped vegetables wrapped in a delicate flour shell and fried to perfection.",
         review: 4.0,
-        price: 2.0
+        price: 2.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Entree",
@@ -187,7 +209,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Crab mixture, cucumber, avocado, and mayo.",
         review: 3.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Entree",
@@ -195,7 +218,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Tempura shrimp, cucumber, and avocado.",
         review: 3.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Entree",
@@ -203,7 +227,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Beef, cucumber, and avocado.",
         review: 3.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Entree",
@@ -211,7 +236,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Rice topped with a salmon fillet.",
         review: 4.0,
-        price: 3.0
+        price: 3.0,
+        restaurantName: "Edo Japan",
     },
     {
         category: "Dessert",
@@ -219,7 +245,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Crispy cookie biscuit stick dipped in dark, chocolate cream.",
         review: 3.0,
-        price: 2.0
+        price: 2.0,
+        restaurantName: "Edo Japan",
     },
     //Sushi Jet Dishes
     {
@@ -228,7 +255,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Six pieces each of California Maki, Tuna Maki and Salmon Maki.",
         review: 4.0,
-        price: 14.0
+        price: 14.0,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Combo",
@@ -236,7 +264,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Six pieces each of California Maki, Spicy Salmon Maki and Unagi Maki.",
         review: 4.0,
-        price: 14.0 
+        price: 14.0,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Appetizer",
@@ -244,7 +273,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Deep-fried tofu served with tempura sauce.",
         review: 4.0,
-        price: 6.0 
+        price: 6.0 ,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Appetizer",
@@ -252,7 +282,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Pan-fried mushrooms in garlic butter.",
         review: 4.0,
-        price: 7.0
+        price: 7.0,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Entree",
@@ -260,7 +291,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Cucumber, avocado, crab, and tokibo roll.",
         review: 3.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Entree",
@@ -268,7 +300,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Tuna roll.",
         review: 3.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Entree",
@@ -276,7 +309,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Salmon roll.",
         review: 4.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Entree",
@@ -284,7 +318,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Spicy sauce, salmon, and tempura bits roll.",
         review: 4.0,
-        price: 6.0
+        price: 6.0,
+        restaurantName: "Sushi Jet",
     },
     {
         category: "Entree",
@@ -292,7 +327,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Eel, avocado, and cucumber roll.",
         review: 3.0,
-        price: 6.0
+        price: 6.0,
+        restaurantName: "Sushi Jet",
     },
     //McDonalds Dishes
     {
@@ -301,7 +337,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with a Big Mac, fries and a drink.",
         review: 4.0,
-        price: 10.0
+        price: 10.0,
+        restaurantName: "McDonalds",
     },
     {
         category: "Combo",
@@ -309,7 +346,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with a Quarter Pounder, fries and a drink.",
         review: 4.0,
-        price: 11.0
+        price: 11.0,
+        restaurantName: "McDonalds",
     },
     {
         category: "Appetizer",
@@ -317,7 +355,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "McDonald's famous french fries.",
         review: 5.0,
-        price: 2.0
+        price: 2.0,
+        restaurantName: "McDonalds",
     },
     {
         category: "Appetizer",
@@ -325,7 +364,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "McDonald's famous french fries covered in gravy and cheese curds.",
         review: 4.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "McDonalds",
     },
     {
         category: "Entree",
@@ -333,7 +373,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with lettuce, two patties and our famouse Big Mac Sauce.",
         review: 4.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "McDonalds",
     },
     {
         category: "Entree",
@@ -341,7 +382,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Our classic quarter pounder comes with cheese, pickles, and onions.",
         review: 4.0,
-        price: 6.0
+        price: 6.0,
+        restaurantName: "McDonalds",
     },
     {
         category: "Dessert",
@@ -349,7 +391,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "A delicious ice cream treat filled with chunks of oreos.",
         review: 5.0,
-        price: 2.0
+        price: 2.0,
+        restaurantName: "McDonalds",
     },
     {
         category: "Dessert",
@@ -357,7 +400,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "The perfect portion of apple pie for anyone looking for something sweet.",
         review: 4.0,
-        price: 1.0
+        price: 1.0,
+        restaurantName: "McDonalds",
     },
     //A&W Dishes
     {
@@ -366,7 +410,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with a Mama Burger, fries and A&W's signature root beer.",
         review: 4.0,
-        price: 10.0
+        price: 10.0,
+        restaurantName: "A&W",
     },
     {
         category: "Combo",
@@ -374,7 +419,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with a Papa Burger, fries and A&W's signature root beer.",
         review: 4.0,
-        price: 12.0
+        price: 12.0,
+        restaurantName: "A&W",
     },
     {
         category: "Appetizers",
@@ -382,7 +428,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "A&W's classic onion rings deep-fried to perfection.",
         review: 5.0,
-        price: 4.0
+        price: 4.0,
+        restaurantName: "A&W",
     },
     {
         category: "Appetizers",
@@ -390,7 +437,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "A&W's signature thick-cut fries made from 100% Canadian grown potatoes.",
         review: 4.0,
-        price: 3.0
+        price: 3.0,
+        restaurantName: "A&W",
     },
     {
         category: "Entree",
@@ -398,7 +446,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "A 100% pure beef patty topped with pickles, onion, ketchup, and mustard.",
         review: 5.0,
-        price: 5.0
+        price: 5.0,
+        restaurantName: "A&W",
     },
     {
         category: "Entree",
@@ -406,7 +455,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Two 100% pure beef patties topped with pickles, onion, ketchup, and mustard.",
         review: 5.0,
-        price: 7.0
+        price: 7.0,
+        restaurantName: "A&W",
     },
     {
         category: "Entree",
@@ -414,7 +464,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Three 100% pure beef patties topped with pickles, onion, ketchup, and mustard.",
         review: 3.0,
-        price: 9.0
+        price: 9.0,
+        restaurantName: "A&W",
     },
     {
         category: "Dessert",
@@ -422,7 +473,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Hot apple turnover dusted with cinnamon sugar.",
         review: 4.0,
-        price: 1.0
+        price: 1.0,
+        restaurantName: "A&W",
     },
     //The Canadian Brewhouse Dishes
     {
@@ -431,7 +483,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with a mix of Perogies, Dry Ribs, and a bowl of Spinach Dip.",
         review: 5.0,
-        price: 30.0
+        price: 30.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Combo",
@@ -439,7 +492,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with a 5 lbs platter of both regular and boneless wings.",
         review: 5.0,
-        price: 60.0
+        price: 60.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Appetizer",
@@ -447,7 +501,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Cheddar perogies served with sauteed onions, bacon bits, sour cream, and green onions.",
         review: 3.0,
-        price: 14.0
+        price: 14.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Appetizer",
@@ -455,7 +510,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Marinated riblets fried and seasoned with sea salt and cracked pepper.",
         review: 3.0,
-        price: 14.0
+        price: 14.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Appetizer",
@@ -463,7 +519,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Tri-coloured tortilla chips served with a full bowl of homemade spinach dip.",
         review: 4.0,
-        price: 14.0
+        price: 14.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Entree",
@@ -471,7 +528,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "1 lb of our classic delicious wings.",
         review: 4.0,
-        price: 14.0
+        price: 14.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Entree",
@@ -479,7 +537,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "1 lb of boneless chicken prepared wing style.",
         review: 3.0,
-        price: 14.0
+        price: 14.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Dessert",
@@ -487,7 +546,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Layers of gooey chocolate over a warm cake served with a scoop of vanilla ice cream.",
         review: 5.0,
-        price: 8.0
+        price: 8.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     {
         category: "Dessert",
@@ -495,7 +555,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Donut fries sprinkled with cinnamon and sugar loaded with caramel sauce and chocolate drizzle.",
         review: 4.0,
-        price: 8.0
+        price: 8.0,
+        restaurantName: "The Canadian Brewhouse",
     },
     //Wild Wings Dishes
     {
@@ -504,7 +565,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with 3 lbs of traditional wings, an order of battered mushrooms and an order of garlic cheese bread.",
         review: 5.0,
-        price: 60.0
+        price: 60.0,
+        restaurantName: "Wild Wings",
     },
     {
         category: "Combo",
@@ -512,7 +574,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Comes with an order of battered mushrooms and garlic cheese bread.",
         review: 4.0,
-        price: 15.0
+        price: 15.0,
+        restaurantName: "Wild Wings",
     },
     {
         category: "Appetizer",
@@ -520,7 +583,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Lightly battered, deep-fried button mushrooms.",
         review: 3.0,
-        price: 10.0
+        price: 10.0,
+        restaurantName: "Wild Wings",
     },
     {
         category: "Appetizer",
@@ -528,7 +592,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Freshly baked loaf smothered in buttery garlic spread.",
         review: 5.0,
-        price: 10.0
+        price: 10.0,
+        restaurantName: "Wild Wings",
     },
     {
         category: "Entree",
@@ -536,7 +601,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "1 lb of our traditional wings, served with fries, celery, carrots, and dip.",
         review: 4.0,
-        price: 18.0 
+        price: 18.0 ,
+        restaurantName: "Wild Wings",
     },
     {
         category: "Entree",
@@ -544,7 +610,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "3 lbs of our traditional wings, served with fries, celery, carrots, and dip.",
         review: 4.0,
-        price: 40.0
+        price: 40.0,
+        restaurantName: "Wild Wings",
     },
     {
         category: "Dessert",
@@ -552,7 +619,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Creamy cheesecake swirled with pieces of white chocolate baked on a chocolate crumb.",
         review: 4.0,
-        price: 9.0
+        price: 9.0,
+        restaurantName: "Wild Wings",
     },
     {
         category: "Dessert",
@@ -560,7 +628,8 @@ export const DishStub = [
         dishPhoto: "",
         description: "Oreo cookies baked into a creamy cheesecake topped with a drizzle of chocolate ganache.",
         review: 5.0,
-        price: 9.0
+        price: 9.0,
+        restaurantName: "Wild Wings",
     }
 
 
