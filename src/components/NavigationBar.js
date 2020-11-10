@@ -77,16 +77,32 @@ class NavigationBar extends Component {
             <i class="fa fa-credit-card" aria-hidden="true" />
             <span>wallet</span>
           </div>
-          <input
-            className={`
+
+          <div className="walletInputContainer">
+            <span className="inputDescriptionText">Budget</span>
+            <div>
+              <input
+                className={`
             navInput
             walletInput
           `}
-            type="text"
-            placeholder="what's your budget?"
-            value={this.state.wallet}
-            onChange={this.handleWalletChange}
-          />
+                type="text"
+                value={this.state.wallet}
+                onChange={this.handleWalletChange}
+              />
+            </div>
+          </div>
+
+          <div className="walletInputContainer">
+            <span className="inputDescriptionText">Remaining</span>
+            <div
+              className={`
+                  walletRemaining
+                `}
+            >
+              N/A
+            </div>
+          </div>
 
           {/* Cart button */}
           <button className="headerButton">
