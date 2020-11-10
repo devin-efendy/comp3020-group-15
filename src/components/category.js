@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SubCategory from "./SubCategory";
+import RestaurantsList from "./RestaurantsList"
 class Category extends Component {
     redColor = "btn btn-danger";
     blackColor = "btn btn-dark";
@@ -14,10 +15,41 @@ class Category extends Component {
             { id: 7, content: "Chinese", btnColor: this.redColor }
         ],
     };
+    category={
+        NEAR_YOU:1,
+        PIZZA:2,
+        CHICKEN:3,
+        BURGERS:4,
+        SUSHI:5,
+        WINGS:6,
+        CHINESE:7
+    };
+    handleClick = (category) => {
+        //load the main page dishes
+        if(category.id===this.category.NEAR_YOU){
+            //load near you restaurant
+            
+        }
+        else if(category.id===this.category.PIZZA){
+            //load restaurant for Pizza
+        }
+        else if(category.id===this.category.CHICKEN){
 
-    handleClick = (content) => {
+        }
+        else if(category.id===this.category.BURGERS){
 
-        console.log(content, "clicked");
+        }
+        else if(category.id===this.category.SUSHI){
+
+        }
+        else if(category.id===this.category.WINGS){
+
+        }
+        else{
+
+        }
+
+        console.log(category.content, "clicked");
         //need to change the color of the button as well
     }
 

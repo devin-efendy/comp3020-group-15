@@ -7,7 +7,7 @@ class SubCategory extends Component {
                 <button type="button" className={"buttonStyle"+" "+this.props.category.btnColor}
                     id={this.props.category.id}         
                     onClick={() => {
-                        this.props.onClick(this.props.category.content);
+                        this.props.onClick(this.props.category);
                         this.props.onColorChange(this.props.category.id);
                     }}>
                     {this.props.category.content}
