@@ -2,7 +2,7 @@ const RestaurantStub = [
   {
     category: "pizza",
     restaurantName: "Pizza Pizza",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-pizza-slice fa-5x",
     deliveryTime: "20 mins.",
     deliveryFee: 5.0,
     review: 3,
@@ -10,7 +10,7 @@ const RestaurantStub = [
   {
     category: "pizza",
     restaurantName: "Pizza Hut",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-pizza-slice fa-5x",
     deliveryTime: "30 mins.",
     deliveryFee: 7.0,
     review: 3,
@@ -18,7 +18,7 @@ const RestaurantStub = [
   {
     category: "burger",
     restaurantName: "McDonalds",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-hamburger fa-5x",
     deliveryTime: "10 mins.",
     deliveryFee: 2.0,
     review: 3,
@@ -26,7 +26,7 @@ const RestaurantStub = [
   {
     category: "burger",
     restaurantName: "A&W",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-hamburger fa-5x",
     deliveryTime: "8 mins.",
     deliveryFee: 2.0,
     review: 4,
@@ -34,7 +34,7 @@ const RestaurantStub = [
   {
     category: "sushi",
     restaurantName: "Edo Japan",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-seedling fa-5x",
     deliveryTime: "21 mins.",
     deliveryFee: 3.0,
     review: 4,
@@ -42,7 +42,7 @@ const RestaurantStub = [
   {
     category: "sushi",
     restaurantName: "Sushi Jet",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-seedling fa-5x",
     deliveryTime: "29 mins.",
     deliveryFee: 5.0,
     review: 3,
@@ -50,7 +50,7 @@ const RestaurantStub = [
   {
     category: "wings",
     restaurantName: "The Canadian Brewhouse",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-drumstick-bite fa-5x",
     deliveryTime: "40 mins.",
     deliveryFee: 7.0,
     review: 5,
@@ -58,7 +58,7 @@ const RestaurantStub = [
   {
     category: "wings",
     restaurantName: "Wild Wings",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-drumstick-bite fa-5x",
     deliveryTime: "25 mins.",
     deliveryFee: 5.0,
     review: 4,
@@ -66,7 +66,7 @@ const RestaurantStub = [
   {
     category: "chinese",
     restaurantName: "Asia Palace",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-pepper-hot fa-5x",
     deliveryTime: "22 mins.",
     deliveryFee: 4.0,
     review: 3,
@@ -74,7 +74,7 @@ const RestaurantStub = [
   {
     category: "chinese",
     restaurantName: "North Garden",
-    restaurantLogo: "",
+    restaurantLogo: "fas fa-pepper-hot fa-5x",
     deliveryTime: "30 mins.",
     deliveryFee: 5.0,
     review: 4,
