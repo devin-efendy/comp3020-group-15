@@ -55,7 +55,7 @@ class Cart extends Component {
     const list = this.dishes.map((dish) => {
       return (
       <li>
-        {type==="dish"?(<p>{dish.name}</p>):(<p>{"price: "}{dish.price}{"$"}</p>)}
+        {type==="dish"?(<p>{dish.name}</p>):(<p>{"price: "}{dish.price}{" $"}</p>)}
       </li>);
     });
     return list;
@@ -103,11 +103,11 @@ class Cart extends Component {
               <p>Total</p>
             </div>
             <div className="cartSection">
-              <p>{this.subTotal}</p>
-              <p>{this.tax}</p>
-              <p>{this.deliveryCharge}</p>
-              <p>{this.tip}</p>
-              <p>{this.total}</p>
+              <p>{this.subTotal}{" $"}</p>
+              <p>{this.tax}{" $"}</p>
+              <p>{this.deliveryCharge}{" $"}</p>
+              <p>{this.tip}{" $"}</p>
+              <p>{this.total}{" $"}</p>
             </div>
           </div>
         ) : (
