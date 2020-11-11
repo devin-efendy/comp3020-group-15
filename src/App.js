@@ -9,10 +9,12 @@ import Sidebar from "./components/Sidebar";
 import RestaurantsList from "./components/RestaurantsList";
 
 import Category from "./components/Category";
-
+import MainList from "./components/MainList.js";
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
 import "./css/Category.css";
+
+
 const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
 const DISH_SELECTION = "DISH_SELECTION";
 
@@ -56,8 +58,6 @@ class App extends React.Component {
     }
     return (
       <div className="App">
-        <Header />
-        <Wallet />
         <NavigationBar
           walletOn={this.state.walletOn}
           handleWalletToggle={this.handleWalletToggle}
