@@ -3,11 +3,9 @@ import ReactDOM from "react-dom";
 
 import "./css/App.css";
 
-import Header from "./components/Header";
+import NavigationBar from "./components/NavigationBar";
 import Cart from "./components/Cart";
-import Wallet from "./components/Wallet";
 import Sidebar from "./components/Sidebar";
-import MainList from "./components/MainList";
 import RestaurantsList from "./components/RestaurantsList";
 
 import Category from "./components/Category";
@@ -15,11 +13,39 @@ import Category from "./components/Category";
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
 import "./css/Category.css";
+const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
+const DISH_SELECTION = "DISH_SELECTION";
+
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      userState: RESTAURANT_SELECTION,
+      totalPrice: 0,
+      walletUserBudget: 0,
+      walletCurrentValue: 0,
+      selectedRestaurant: {
+        restaurantName: "",
+        restaurantLogo: "",
+        deliveryTime: "",
+        deliveryFee: -1,
+        review: -1,
+      },
+    };
   }
+
+  handleSelectRestaurant = (restaurant) => {
+    this.setState({
+      selectedRestaurant: restaurant,
+      userState: DISH_SELECTION,
+    });
+  };
+
+  handleBackButtonClick = () => {
+    this.setState({
+      userState: RESTAURANT_SELECTION,
+    });
+  };
 
   render() {
     const mainSection={
@@ -32,6 +58,15 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Wallet />
+        <NavigationBar
+          walletOn={this.state.walletOn}
+          handleWalletToggle={this.handleWalletToggle}
+          handleBackButtonClick={this.handleBackButtonClick}
+          userState={this.state.userState}
+          restaurantName={this.state.selectedRestaurant.restaurantName}
+        />
+        {/* <Wallet /> */}
+
         <div className="Main__Container">
           <div className="categories">
             <Category />  
@@ -42,7 +77,9 @@ class App extends React.Component {
           
           <Sidebar />
           {/* <MainList /> */}
-          <RestaurantsList/>
+          <RestaurantsList
+            handleSelectRestaurant={this.handleSelectRestaurant}
+          />
         </div>
 
         <Cart />

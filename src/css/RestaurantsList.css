@@ -6,19 +6,20 @@
   justify-content: center;
 
   flex-direction: column;
+  padding-top: 1rem;
 }
 
 .restaurants {
   display: flex;
   align-items: center;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .restaurantContainer {
   background: lightgray;
   border-radius: 10px;
   display: flex;
-  width: 900px;
+  /* width: 900px; */
   /* height: 150px; */
   padding: 2rem;
 }
@@ -68,7 +69,7 @@
   justify-content: center;
 }
 
-button {
+.selectButton {
   /* position: absolute; */
   color: blanchedalmond;
   background-color: rgb(78, 62, 62);
