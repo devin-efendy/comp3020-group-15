@@ -1,18 +1,15 @@
 import React from "react";
 import "../css/RestaurantsList.css";
-import RestaurantStub from "../backend/RestaurantStub";
 
-class RestaurantsList extends React.Component {
+class Restaurant extends React.Component {
   constructor() {
     super();
-    this.state = {};
   }
 
   render() {
-    const restaurantList = RestaurantStub;
+    const restaurant = this.props.restaurantObj;
 
-    //formatting the restaurant boxes/info
-    const restaurantRenderList = restaurantList.map((restaurant) => (
+    return (
       <div className="restaurants">
         <div className="restaurantContainer">
           <div className="restaurantLogo">
@@ -33,6 +30,7 @@ class RestaurantsList extends React.Component {
             <button
               className="selectButton"
               onClick={() => {
+                console.log("test");
                 this.props.handleSelectRestaurant(restaurant);
               }}
             >
@@ -41,12 +39,8 @@ class RestaurantsList extends React.Component {
           </div>
         </div>
       </div>
-    ));
-
-    return (
-      <div className="RestaurantList__Container">{restaurantRenderList}</div>
     );
   }
 }
 
-export default RestaurantsList;
+export default Restaurant;

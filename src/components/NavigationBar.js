@@ -7,19 +7,13 @@ class NavigationBar extends Component {
     super(props);
     this.state = {
       address: "",
-      walletValue: "",
+      budget: 0,
     };
   }
 
   handleAddressChange = (event) => {
     this.setState({
       address: event.target.value,
-    });
-  };
-
-  handleWalletChange = (event) => {
-    this.setState({
-      walletValue: event.target.value,
     });
   };
 
@@ -33,6 +27,10 @@ class NavigationBar extends Component {
         default:
           break;
       }
+    };
+
+    const getWalletRemainingText = () => {
+      return this.state.budget > 0 ? this.props.walletRemaining : "-";
     };
 
     return (
@@ -83,12 +81,16 @@ class NavigationBar extends Component {
             <div>
               <input
                 className={`
-            navInput
-            walletInput
-          `}
+                navInput
+                walletInput
+              `}
                 type="text"
-                value={this.state.wallet}
-                onChange={this.handleWalletChange}
+                onBlur={(event) => {
+                  this.setState({
+                    budget: event.target.value,
+                  });
+                  this.props.handleWalletBudgetChange(event.target.value);
+                }}
               />
             </div>
           </div>
@@ -100,7 +102,7 @@ class NavigationBar extends Component {
                   walletRemaining
                 `}
             >
-              N/A
+              {getWalletRemainingText()}
             </div>
           </div>
 

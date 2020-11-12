@@ -6,7 +6,10 @@ import "./css/App.css";
 import NavigationBar from "./components/NavigationBar";
 import Cart from "./components/Cart";
 import Sidebar from "./components/Sidebar";
-import RestaurantsList from "./components/RestaurantsList";
+import Restaurant from "./components/Restaurant";
+import Dish from "./components/Dish";
+import RestaurantStub from "./backend/RestaurantStub";
+import DishStub from "./backend/DishStub";
 
 const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
 const DISH_SELECTION = "DISH_SELECTION";
@@ -18,7 +21,7 @@ class App extends React.Component {
       userState: RESTAURANT_SELECTION,
       totalPrice: 0,
       walletUserBudget: 0,
-      walletCurrentValue: 0,
+      walletRemaining: 0,
       selectedRestaurant: {
         restaurantName: "",
         restaurantLogo: "",
@@ -26,6 +29,7 @@ class App extends React.Component {
         deliveryFee: -1,
         review: -1,
       },
+      selectedDishes: [],
     };
   }
 
@@ -36,9 +40,34 @@ class App extends React.Component {
     });
   };
 
+  handleSelectDish = (dish) => {
+    /**
+     * When the user select a dish do the following:
+     * 1. Add the price of the dish to the total price.
+     * 2. Substract the remaining value of user's budget.
+     * 3. Add the selected dish to the selectedDishes list.
+     *
+     * @param {*} dish the selected dish
+     */
+
+    this.setState({
+      totalPrice: this.state.totalPrice + dish.price,
+      walletRemaining: this.state.walletRemaining - dish.price,
+      selectedDishes: [...this.state.selectedDishes, dish],
+    });
+  };
+
   handleBackButtonClick = () => {
     this.setState({
       userState: RESTAURANT_SELECTION,
+      selectedRestaurant: "",
+    });
+  };
+
+  handleWalletBudgetChange = (value) => {
+    this.setState({
+      walletUserBudget: value,
+      walletRemaining: value - this.state.totalPrice,
     });
   };
 
@@ -46,26 +75,64 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavigationBar
-          walletOn={this.state.walletOn}
-          handleWalletToggle={this.handleWalletToggle}
+          handleWalletBudgetChange={this.handleWalletBudgetChange}
           handleBackButtonClick={this.handleBackButtonClick}
           userState={this.state.userState}
           restaurantName={this.state.selectedRestaurant.restaurantName}
+          walletRemaining={this.state.walletRemaining}
         />
-        {/* <Wallet /> */}
 
         <div className="Main__Container">
           <Sidebar />
-          {/* <MainList /> */}
-          <RestaurantsList
-            handleSelectRestaurant={this.handleSelectRestaurant}
-          />
+
+          <div className="MainList__Container">
+            {this.state.userState === DISH_SELECTION
+              ? this.renderDishList()
+              : this.renderRestaurantList()}
+          </div>
         </div>
 
         <Cart />
       </div>
     );
   }
+
+  /**
+   * This function will render the list of Restaurants
+   */
+  renderRestaurantList = () => {
+    const restaurantList = RestaurantStub;
+
+    return restaurantList.map((restaurant) => {
+      return (
+        <Restaurant
+          restaurantObj={restaurant}
+          handleSelectRestaurant={this.handleSelectRestaurant}
+        />
+      );
+    });
+  };
+
+  /**
+   * This function will render the list of Dishes from the selectedRestaurant
+   */
+  renderDishList = () => {
+    const dishList = DishStub.filter((dish) => {
+      return (
+        dish.restaurantName === this.state.selectedRestaurant.restaurantName
+      );
+    });
+
+    return dishList.map((dish) => {
+      return (
+        <Dish
+          dishObj={dish}
+          handleSelectDish={this.handleSelectDish}
+          isWithinBudget={this.state.walletRemaining >= dish.price}
+        />
+      );
+    });
+  };
 }
 
 export default App;
