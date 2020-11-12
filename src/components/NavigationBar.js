@@ -67,6 +67,11 @@ class NavigationBar extends Component {
               placeholder="Your address"
               value={this.state.address}
               onChange={this.handleAddressChange}
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  event.target.blur();
+                }
+              }}
             />
           </div>
 
@@ -90,6 +95,11 @@ class NavigationBar extends Component {
                     budget: event.target.value,
                   });
                   this.props.handleWalletBudgetChange(event.target.value);
+                }}
+                onKeyPress={(event) => {
+                  if (event.key === "Enter") {
+                    event.target.blur();
+                  }
                 }}
               />
             </div>
