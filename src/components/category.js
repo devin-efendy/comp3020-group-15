@@ -67,8 +67,11 @@ class Category extends Component {
     }
 
     render() {
+        const style={
+            paddingTop: "26px",
+        }
         return (
-            <div>
+            <div style={style}>
                 {this.state.categories.map(category => {
                     return (
                         <SubCategory

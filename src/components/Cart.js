@@ -30,7 +30,7 @@ class Cart extends Component {
     this.state = {
       showCart: false,
     };
-
+    
     this.openOrClose = this.openOrClose.bind(this);
   }
 

@@ -9,7 +9,6 @@ import Sidebar from "./components/Sidebar";
 import RestaurantsList from "./components/RestaurantsList";
 
 import Category from "./components/Category";
-import MainList from "./components/MainList.js";
 import { RestaurantStub } from "./backend/RestaurantStub";
 import { DishStub } from "./backend/DishStub";
 import "./css/Category.css";
@@ -68,14 +67,8 @@ class App extends React.Component {
         {/* <Wallet /> */}
 
         <div className="Main__Container">
-          <div className="categories">
-            <Category />  
-          </div>
-          <div style={mainSection}>
-            <MainList />
-          </div>
-          
-          <Sidebar />
+          <Category/>
+          {/*<Sidebar /*}
           {/* <MainList /> */}
           <RestaurantsList
             handleSelectRestaurant={this.handleSelectRestaurant}
