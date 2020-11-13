@@ -6,11 +6,14 @@ import "./css/App.css";
 import NavigationBar from "./components/NavigationBar";
 import Cart from "./components/Cart";
 import Sidebar from "./components/Sidebar";
-import RestaurantsList from "./components/RestaurantsList";
+import Restaurant from "./components/Restaurant";
+import Dish from "./components/Dish";
+import RestaurantStub from "./backend/RestaurantStub";
+import DishStub from "./backend/DishStub";
 
 import Category from "./components/Category";
-import { RestaurantStub } from "./backend/RestaurantStub";
-import { DishStub } from "./backend/DishStub";
+import "./backend/RestaurantStub";//{ RestaurantStub } from 
+import "./backend/DishStub";//{ DishStub } from 
 import "./css/Category.css";
 
 
@@ -24,7 +27,7 @@ class App extends React.Component {
       userState: RESTAURANT_SELECTION,
       totalPrice: 0,
       walletUserBudget: 0,
-      walletCurrentValue: 0,
+      walletRemaining: 0,
       selectedRestaurant: {
         restaurantName: "",
         restaurantLogo: "",
@@ -32,6 +35,7 @@ class App extends React.Component {
         deliveryFee: -1,
         review: -1,
       },
+      selectedDishes: [],
     };
   }
 
@@ -42,43 +46,100 @@ class App extends React.Component {
     });
   };
 
+  handleSelectDish = (dish) => {
+    /**
+     * When the user select a dish do the following:
+     * 1. Add the price of the dish to the total price.
+     * 2. Substract the remaining value of user's budget.
+     * 3. Add the selected dish to the selectedDishes list.
+     *
+     * @param {*} dish the selected dish
+     */
+
+    this.setState({
+      totalPrice: this.state.totalPrice + dish.price,
+      walletRemaining: this.state.walletRemaining - dish.price,
+      selectedDishes: [...this.state.selectedDishes, dish],
+    });
+  };
+
   handleBackButtonClick = () => {
     this.setState({
       userState: RESTAURANT_SELECTION,
+      selectedRestaurant: "",
+    });
+  };
+
+  handleWalletBudgetChange = (value) => {
+    this.setState({
+      walletUserBudget: value,
+      walletRemaining: value - this.state.totalPrice,
     });
   };
 
   render() {
-    const mainSection={
-      border: "2px solid green",
-      float: "left",
-      clear: "none",
-      width: "1450px",
-    }
+    
     return (
       <div className="App">
         <NavigationBar
-          walletOn={this.state.walletOn}
-          handleWalletToggle={this.handleWalletToggle}
+          handleWalletBudgetChange={this.handleWalletBudgetChange}
           handleBackButtonClick={this.handleBackButtonClick}
           userState={this.state.userState}
           restaurantName={this.state.selectedRestaurant.restaurantName}
+          walletRemaining={this.state.walletRemaining}
         />
-        {/* <Wallet /> */}
 
         <div className="Main__Container">
-          <Category/>
-          {/*<Sidebar /*}
-          {/* <MainList /> */}
-          <RestaurantsList
-            handleSelectRestaurant={this.handleSelectRestaurant}
-          />
+          
+          
+          <div className="MainList__Container">
+            {this.state.userState === DISH_SELECTION
+              ? this.renderDishList()
+              : this.renderRestaurantList()}
+          </div>
         </div>
 
         <Cart />
       </div>
     );
   }
+
+  /**
+   * This function will render the list of Restaurants
+   */
+  renderRestaurantList = () => {
+    const restaurantList = RestaurantStub;
+
+    return restaurantList.map((restaurant) => {
+      return (
+        <Restaurant
+          restaurantObj={restaurant}
+          handleSelectRestaurant={this.handleSelectRestaurant}
+        />
+      );
+    });
+  };
+
+  /**
+   * This function will render the list of Dishes from the selectedRestaurant
+   */
+  renderDishList = () => {
+    const dishList = DishStub.filter((dish) => {
+      return (
+        dish.restaurantName === this.state.selectedRestaurant.restaurantName
+      );
+    });
+
+    return dishList.map((dish) => {
+      return (
+        <Dish
+          dishObj={dish}
+          handleSelectDish={this.handleSelectDish}
+          isWithinBudget={this.state.walletRemaining >= dish.price}
+        />
+      );
+    });
+  };
 }
 
 export default App;

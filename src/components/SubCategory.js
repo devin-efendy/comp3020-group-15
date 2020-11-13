@@ -4,7 +4,7 @@ class SubCategory extends Component {
     render() {
         return (
             <React.Fragment>
-                <button type="button" className={"buttonStyle"+" "+this.props.category.btnColor}
+                <button type="button" className={""+" "+this.props.category.btnColor}
                     id={this.props.category.id}         
                     onClick={() => {
                         this.props.onClick(this.props.category);

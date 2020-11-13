@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SubCategory from "./SubCategory";
-import RestaurantsList from "./RestaurantsList"
 class Category extends Component {
     redColor = "btn btn-danger";
     blackColor = "btn btn-dark";
@@ -67,11 +66,8 @@ class Category extends Component {
     }
 
     render() {
-        const style={
-            paddingTop: "26px",
-        }
         return (
-            <div style={style}>
+            <div style={{paddingTop:"25px",position:"fixed",height:"195%"}}>
                 {this.state.categories.map(category => {
                     return (
                         <SubCategory
