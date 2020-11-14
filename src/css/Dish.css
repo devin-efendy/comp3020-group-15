@@ -19,20 +19,20 @@
 }
 
 .dimmed {
-  filter: brightness(80%);
   color: #333333 !important;
+  background-color: rgba(0, 0, 0, 0.15) !important;
 }
 
 .dimmed:hover {
   box-shadow: unset !important;
   color: #333333 !important;
-  background-color: rgb(255, 255, 255) !important;
+  background-color: rgba(0, 0, 0, 0.15) !important;
   cursor: not-allowed !important;
 }
 
 .dimmed:active {
   box-shadow: unset !important;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.15);
   cursor: not-allowed !important;
 }
 
