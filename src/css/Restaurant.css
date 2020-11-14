@@ -1,4 +1,4 @@
-.dish {
+.restaurants {
   display: flex;
   align-items: center;
   margin: 1rem 0;
@@ -6,37 +6,7 @@
   color: #333333;
 }
 
-.dishOutOfBudget {
-  background-color: #ffeb3b;
-  border-radius: 5px;
-  padding: 0.3rem 0.4rem;
-
-  color: #333333;
-  font-weight: 400;
-  font-size: 14px;
-
-  margin-top: 5px;
-}
-
-.dimmed {
-  color: #333333 !important;
-  background-color: rgba(0, 0, 0, 0.15) !important;
-}
-
-.dimmed:hover {
-  box-shadow: unset !important;
-  color: #333333 !important;
-  background-color: rgba(0, 0, 0, 0.15) !important;
-  cursor: not-allowed !important;
-}
-
-.dimmed:active {
-  box-shadow: unset !important;
-  background-color: rgba(0, 0, 0, 0.15);
-  cursor: not-allowed !important;
-}
-
-.dishContainer {
+.restaurantContainer {
   outline: none;
   border: none;
 
@@ -52,20 +22,20 @@
   overflow: hidden;
 }
 
-.dishContainer:hover {
+.restaurantContainer:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   background-color: rgb(255, 255, 255);
   cursor: pointer;
-  color: black;
+  color: black !important;
 }
 
-.dishContainer:active {
+.restaurantContainer:active {
   transition: box-shadow 0.05s ease;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   background-color: #f7f7f7;
 }
 
-.dishImage {
+.restaurantImage {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -73,13 +43,13 @@
   margin-right: 2rem;
 }
 
-.dishImage img {
+.restaurantImage img {
   width: 200px;
   height: 100%;
   object-fit: cover;
 }
 
-.dishGroup__Name_Description {
+.restaurantInfoContainer {
   width: 500px;
 
   display: flex;
@@ -88,64 +58,43 @@
   margin-right: 2rem;
 }
 
-.restaurantDeliveryInfo {
-  width: 500px;
-
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-right: 2rem;
-}
-
-.dishName {
+.restaurantName {
   font-weight: 400;
   color: #333333;
   font-size: 24px;
   margin-bottom: 1.5rem;
 }
 
-.dishDescription {
-  font-size: 13px;
-  font-weight: 300;
-}
-
 .fontThin {
   font-weight: 300;
 }
 
-.dishReviewContainer {
+.restaurantReviewContainer {
   display: flex;
-  align-items: flex-end;
   justify-content: center;
   flex-direction: column;
   margin-right: 2rem;
   width: 200px;
 }
 
-.dishReview {
+.restaurantReview {
   display: flex;
-  align-self: flex-end;
-  text-align: right;
+  align-items: center;
+  justify-content: center;
 
-  color: #333333;
-  /* width: 100%; */
+  color: #222222;
+  width: 120px;
 
   border-radius: 5px;
-
-  margin-bottom: 2rem;
+  padding: 0.2rem;
 }
 
-.dishPrice {
-  font-size: 20px;
-}
-
-.dishReview span {
+.restaurantReview span {
   font-size: 16px;
   margin-right: 0.4rem;
-  align-self: flex-end;
 }
 
-.dishReview i {
+.restaurantReview i {
   color: #66bb6a;
   font-size: 16px;
 }

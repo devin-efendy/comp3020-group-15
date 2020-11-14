@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 .App {
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  background-color: #f9f9f9;
 }
 
 .Main__Container {
@@ -9,6 +12,9 @@
 
   display: flex;
   flex-direction: row;
+
+  max-width: 1366px;
+  margin: 0 auto;
 }
 
 .MainList__Container {
@@ -19,5 +25,5 @@
   justify-content: center;
 
   flex-direction: column;
-  padding-top: 1rem;
+  margin: 1rem 4rem;
 }

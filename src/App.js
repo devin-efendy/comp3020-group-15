@@ -34,10 +34,15 @@ class App extends React.Component {
   }
 
   handleSelectRestaurant = (restaurant) => {
-    this.setState({
-      selectedRestaurant: restaurant,
-      userState: DISH_SELECTION,
-    });
+    this.setState(
+      {
+        selectedRestaurant: restaurant,
+        userState: DISH_SELECTION,
+      },
+      () => {
+        window.scrollTo(0, 0);
+      }
+    );
   };
 
   handleSelectDish = (dish) => {
@@ -58,10 +63,14 @@ class App extends React.Component {
   };
 
   handleBackButtonClick = () => {
-    this.setState({
-      userState: RESTAURANT_SELECTION,
-      selectedRestaurant: "",
-    });
+    this.setState(
+      {
+        userState: RESTAURANT_SELECTION,
+      },
+      () => {
+        window.scrollTo(0, 0);
+      }
+    );
   };
 
   handleWalletBudgetChange = (value) => {
@@ -123,12 +132,20 @@ class App extends React.Component {
       );
     });
 
+    let count = 0;
+
     return dishList.map((dish) => {
+      dish.dishPhoto =
+        process.env.PUBLIC_URL + `/assets/dish/dish-${count}.jpg`;
+      count = (count + 1) % 7;
       return (
         <Dish
           dishObj={dish}
           handleSelectDish={this.handleSelectDish}
-          isWithinBudget={this.state.walletRemaining >= dish.price}
+          isWithinBudget={
+            this.state.walletUserBudget == 0 ||
+            this.state.walletRemaining >= dish.price
+          }
         />
       );
     });
