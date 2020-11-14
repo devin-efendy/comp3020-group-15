@@ -5,7 +5,7 @@ export const DishStub = [
     dishName: "Meet the Meat Pizzas",
     dishPhoto: "",
     description:
-      "Get both signature Pizza-Pizza dishes for one great price. Comes with one" +
+      "Get both signature Pizza-Pizza dishes for one great price. Comes with one " +
       "Bacon Cheeseburger Pizza and one Canadian Pizza.",
     review: 5.0,
     price: 20.0,
@@ -16,7 +16,7 @@ export const DishStub = [
     dishName: "Appetizer Combo",
     dishPhoto: "",
     description:
-      "Get both Pizza-Pizza appetizers in one big dish. Comes with one order of" +
+      "Get both Pizza-Pizza appetizers in one big dish. Comes with one order of " +
       "Jalapeno Poppers and one order of Deep-Fried Pickles.",
     review: 5.0,
     price: 10.0,
@@ -113,7 +113,7 @@ export const DishStub = [
     dishName: "The Bread Basket",
     dishPhoto: "",
     description:
-      "If you can't decide on what kind of bread to get, why not get both? Comes with one big basket filled" +
+      "If you can't decide on what kind of bread to get, why not get both? Comes with one big basket filled " +
       "with our signature breadsticks and garlic bread.",
     review: 5.0,
     price: 5.0,
@@ -852,7 +852,7 @@ export const DishStub = [
     dishName: "Deluxe Chow Mein",
     dishPhoto: "",
     description:
-      "Barbeque pork, chicken, shrimp, scallop, squid, and fresh vegetables are stir-fried" +
+      "Barbeque pork, chicken, shrimp, scallop, squid, and fresh vegetables are stir-fried " +
       "in a light sauce, and served over crispy noodles.",
     review: 4.0,
     price: 15.0,
