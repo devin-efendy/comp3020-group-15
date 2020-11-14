@@ -83,9 +83,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-
         {this.state.showAddressPopup ? <AddressPrompt closeAddressPopup={this.handleAddressPrompt.bind(this)}/> : null}
-
         <NavigationBar
           handleWalletBudgetChange={this.handleWalletBudgetChange}
           handleBackButtonClick={this.handleBackButtonClick}
