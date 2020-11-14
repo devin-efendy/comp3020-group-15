@@ -8,6 +8,8 @@ import Cart from "./components/Cart";
 import Sidebar from "./components/Sidebar";
 import Restaurant from "./components/Restaurant";
 import Dish from "./components/Dish";
+import AddressPrompt from './components/AddressPrompt';
+
 import RestaurantStub from "./backend/RestaurantStub";
 import DishStub from "./backend/DishStub";
 
@@ -30,7 +32,14 @@ class App extends React.Component {
         review: -1,
       },
       selectedDishes: [],
+      showAddressPopup: true,
     };
+  }
+
+  handleAddressPrompt() {
+    this.setState({
+      showAddressPopup: !this.state.showAddressPopup
+    });
   }
 
   handleSelectRestaurant = (restaurant) => {
@@ -83,6 +92,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        {this.state.showAddressPopup ? <AddressPrompt closeAddressPopup={this.handleAddressPrompt.bind(this)}/> : null}
         <NavigationBar
           handleWalletBudgetChange={this.handleWalletBudgetChange}
           handleBackButtonClick={this.handleBackButtonClick}
