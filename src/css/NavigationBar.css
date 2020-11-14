@@ -1,9 +1,9 @@
 .headerContainer {
   /* Sticky, top, and left are necessary 
   for making the navigation bar stick to the top */
-  position: sticky;
+  /* position: sticky;
   top: 0;
-  left: 0;
+  left: 0; */
 
   display: flex;
   align-items: center;
@@ -11,12 +11,25 @@
 
   padding: 1rem 1rem;
 
-  background-color: #fafafa;
+  /* background-color: red; */
+  max-width: 1366px;
+
   height: 60px;
 
   border-width: 0;
   outline: none;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.headerResponsiveContainer {
+  background-color: white;
+  /* width: 100vw; */
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .headerButton {
@@ -61,8 +74,9 @@
   margin: 0 1rem;
 }
 
-h1 {
-  font-size: 24px;
+.navigationStateText h1 {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .headerGroup_AlignRight {

@@ -1,46 +1,64 @@
 import React from "react";
-import "../css/RestaurantsList.css";
+import "../css/Restaurant.css";
 
 class Restaurant extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const restaurant = this.props.restaurantObj;
 
     return (
-      <div className="restaurants">
+      <div
+        className="restaurants"
+        onClick={() => {
+          this.props.handleSelectRestaurant(restaurant);
+        }}
+      >
         <div className="restaurantContainer">
-          <div className="restaurantLogo">
-            <i class={restaurant.restaurantLogo} />
+          <div className="restaurantImage">
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                `/assets/restaurant/${restaurant.restaurantImg}`
+              }
+              alt="logo"
+            />
           </div>
 
-          <div className="restaurantGroup__Name_Ratings">
+          <div className="restaurantInfoContainer">
             <h2 className="restaurantName">{restaurant.restaurantName}</h2>
-            <p className="ratings">Ratings: {restaurant.review} stars</p>
+            <p>
+              {restaurant.deliveryTime}{" "}
+              <span className="fontThin">delivery time</span>
+            </p>
+            <p>
+              ${restaurant.deliveryFee}.00{" "}
+              <span className="fontThin">delivery fee</span>
+            </p>
           </div>
 
-          <div className="restaurantGroup__Time_Fee">
-            <div>Delivery time: {restaurant.deliveryTime}</div>
-            <div>Delivery fee: ${restaurant.deliveryFee}</div>
-          </div>
-
-          <div className="restaurantGroup__Button">
-            <button
-              className="selectButton"
-              onClick={() => {
-                console.log("test");
-                this.props.handleSelectRestaurant(restaurant);
-              }}
-            >
-              Select
-            </button>
+          <div className="restaurantReviewContainer">
+            <div className="restaurantReview">
+              <span>{restaurant.review}</span>
+              {this.renderReviewStars(restaurant.review)}
+            </div>
           </div>
         </div>
       </div>
     );
   }
+
+  renderReviewStars = (n) => {
+    let stars = [];
+
+    for (let i = 0; i < n; i++) {
+      stars.push(<i class="fas fa-star fa-1x" />);
+    }
+
+    for (let i = 0; i < 5 - n; i++) {
+      stars.push(<i class="far fa-star fa-1x" />);
+    }
+
+    return <div>{stars}</div>;
+  };
 }
 
 export default Restaurant;
