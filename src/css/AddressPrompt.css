@@ -35,7 +35,7 @@
   .addressPromptBox:hover {
     background-position: right center;
     text-align: center;
-    transition: 0.5s;
+    transition: 0.7s;
     background-size: 200% auto;
     background-image: linear-gradient(to left, #961717 0%, #c04545 51%, #6d1010 100%);
   }
@@ -45,7 +45,7 @@
     padding: 1rem;
 
     color: blanchedalmond;
-    background-color: rgb(46, 5, 5);
+    background-image: linear-gradient(to left, #520f0f 0%, #c04545 51%, #6d1010 100%);
     padding: 1rem;
     font-size: 20px;
     border: none;
@@ -54,6 +54,14 @@
     outline: none;
     border-radius: 3px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.addressPromptBox button:hover{
+    background-position: right;
+    text-align: center;
+    transition: 1s;
+    background-size: 300% auto;
+    background-image: linear-gradient(to right, #642d2d 0%, #471d1d 51%, #361515 100%);
 }
 
 .addressPromptBox input{
