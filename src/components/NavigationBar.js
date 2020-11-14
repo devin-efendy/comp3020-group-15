@@ -34,8 +34,8 @@ class NavigationBar extends Component {
     };
 
     return (
-      <div className="headerContainer">
-        <div>
+      <div className="headerResponsiveContainer">
+        <div className="headerContainer">
           <button
             className={`
               ${
@@ -51,51 +51,22 @@ class NavigationBar extends Component {
             <i class="fa fa-chevron-left" aria-hidden="true" />
             <span>back</span>
           </button>
-        </div>
 
-        <div className="navigationStateText">
-          <h1>{getNavStateText()}</h1>
-        </div>
-
-        <div className="headerGroup_AlignRight">
-          {/* User Address*/}
-          <div className="userAddress">
-            <i class="fas fa-house-user"></i>
-            <input
-              className="navInput"
-              type="text"
-              placeholder="Your address"
-              value={this.state.address}
-              onChange={this.handleAddressChange}
-              onKeyPress={(event) => {
-                if (event.key === "Enter") {
-                  event.target.blur();
-                }
-              }}
-            />
+          {/* Navigation text */}
+          <div className="navigationStateText">
+            <h1>{getNavStateText()}</h1>
           </div>
 
-          {/* Wallet */}
-          <div className="wallet">
-            <i class="fa fa-credit-card" aria-hidden="true" />
-            <span>wallet</span>
-          </div>
-
-          <div className="walletInputContainer">
-            <span className="inputDescriptionText">Budget</span>
-            <div>
+          <div className="headerGroup_AlignRight">
+            {/* User Address*/}
+            <div className="userAddress">
+              <i class="fas fa-house-user"></i>
               <input
-                className={`
-                navInput
-                walletInput
-              `}
+                className="navInput"
                 type="text"
-                onBlur={(event) => {
-                  this.setState({
-                    budget: event.target.value,
-                  });
-                  this.props.handleWalletBudgetChange(event.target.value);
-                }}
+                placeholder="Your address"
+                value={this.state.address}
+                onChange={this.handleAddressChange}
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
                     event.target.blur();
@@ -103,24 +74,54 @@ class NavigationBar extends Component {
                 }}
               />
             </div>
-          </div>
 
-          <div className="walletInputContainer">
-            <span className="inputDescriptionText">Remaining</span>
-            <div
-              className={`
+            {/* Wallet */}
+            <div className="wallet">
+              <i class="fa fa-credit-card" aria-hidden="true" />
+              <span>wallet</span>
+            </div>
+
+            <div className="walletInputContainer">
+              <span className="inputDescriptionText">Budget</span>
+              <div>
+                <input
+                  className={`
+                navInput
+                walletInput
+              `}
+                  type="text"
+                  onBlur={(event) => {
+                    this.setState({
+                      budget: event.target.value,
+                    });
+                    this.props.handleWalletBudgetChange(event.target.value);
+                  }}
+                  onKeyPress={(event) => {
+                    if (event.key === "Enter") {
+                      event.target.blur();
+                    }
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="walletInputContainer">
+              <span className="inputDescriptionText">Remaining</span>
+              <div
+                className={`
                   walletRemaining
                 `}
-            >
-              {getWalletRemainingText()}
+              >
+                {getWalletRemainingText()}
+              </div>
             </div>
-          </div>
 
-          {/* Cart button */}
-          <button className="headerButton">
-            <i class="fas fa-shopping-bag"></i>
-            <span>cart</span>
-          </button>
+            {/* Cart button */}
+            <button className="headerButton">
+              <i class="fas fa-shopping-bag"></i>
+              <span>cart</span>
+            </button>
+          </div>
         </div>
       </div>
     );

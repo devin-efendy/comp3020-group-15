@@ -10,50 +10,62 @@ const foodLogoList = [
 ];
 
 class Dish extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const dish = this.props.dishObj;
-    // const dishLogo =
-    //   foodLogoList[Math.floor(Math.random() * foodLogoList.length)];
-
-    const dishLogo = foodLogoList[0];
 
     return (
-      <div className="dish">
-        <div className="dishContainer">
-          <div className="dishLogo">
-            <i class={dishLogo} />
+      <div
+        className="dish"
+        onClick={() => {
+          if (this.props.isWithinBudget) {
+            this.props.handleSelectDish(dish);
+          }
+        }}
+      >
+        <div
+          className={`dishContainer ${
+            this.props.isWithinBudget ? "" : "dimmed"
+          }`}
+        >
+          <div className="dishImage">
+            <img src={dish.dishPhoto} alt="logo" />
           </div>
 
-          <div className="dishGroup__Name_Ratings">
-            <div>
-              <h2 className="dishName">{dish.dishName}</h2>
+          <div className="dishGroup__Name_Description">
+            <h2 className="dishName">{dish.dishName}</h2>
+            <p className="dishDescription">{dish.description}</p>
+          </div>
+
+          <div className="dishReviewContainer">
+            <div className="dishReview">
+              <span>{dish.review}</span>
+              {this.renderReviewStars(dish.review)}
             </div>
-            <p className="description">{dish.description}</p>
-          </div>
-
-          <div className="dishGroup__Time_Fee">
-            <p>Price: {dish.price}</p>
-            <p>Ratings: {dish.review}</p>
-          </div>
-
-          <div className="dishGroup__Button">
-            <button
-              className="selectButton"
-              onClick={() => {
-                this.props.handleSelectDish(dish);
-              }}
-            >
-              Select
-            </button>
+            <p className="dishPrice">${dish.price}.00 </p>
+            {!this.props.isWithinBudget ? this.renderOutOfBudget() : ""}
           </div>
         </div>
       </div>
     );
   }
+
+  renderOutOfBudget = () => {
+    return <div className="dishOutOfBudget">Out of budget</div>;
+  };
+
+  renderReviewStars = (n) => {
+    let stars = [];
+
+    for (let i = 0; i < n; i++) {
+      stars.push(<i class="fas fa-star fa-1x" />);
+    }
+
+    for (let i = 0; i < 5 - n; i++) {
+      stars.push(<i class="far fa-star fa-1x" />);
+    }
+
+    return <div>{stars}</div>;
+  };
 }
 
 export default Dish;
