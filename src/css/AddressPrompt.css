@@ -22,7 +22,7 @@
     align-items: center;
     margin: auto;
     border-radius: 10px;
-    background-image: linear-gradient(to left, #961717 0%, #a13434 51%, #9c1b1b 100%);
+    background-image: linear-gradient(to left, #961717 0%, #c04545 51%, #6d1010 100%);
     padding: 4rem;
     width: 700px;
 }
@@ -37,7 +37,7 @@
     text-align: center;
     transition: 0.5s;
     background-size: 200% auto;
-    background-image: linear-gradient(to left, #961717 0%, #a13434 51%, #9c1b1b 100%);
+    background-image: linear-gradient(to left, #961717 0%, #c04545 51%, #6d1010 100%);
   }
 
 .addressPromptBox button {
