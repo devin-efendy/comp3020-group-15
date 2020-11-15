@@ -11,12 +11,6 @@ class NavigationBar extends Component {
     };
   }
 
-  handleAddressChange = (event) => {
-    this.setState({
-      address: event.target.value,
-    });
-  };
-
   render() {
     const getNavStateText = () => {
       switch (this.props.userState) {
@@ -65,8 +59,10 @@ class NavigationBar extends Component {
                 className="navInput"
                 type="text"
                 placeholder="Your address"
-                value={this.state.address}
-                onChange={this.handleAddressChange}
+                value={this.props.userAddress}
+                onChange={(event) => {
+                  this.props.handleAddressChange(event.target.value);
+                }}
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
                     event.target.blur();
