@@ -8,7 +8,7 @@ import Cart from "./components/Cart";
 import Sidebar from "./components/Sidebar";
 import Restaurant from "./components/Restaurant";
 import Dish from "./components/Dish";
-import AddressPrompt from './components/AddressPrompt';
+import AddressPrompt from "./components/AddressPrompt";
 
 import RestaurantStub from "./backend/RestaurantStub";
 import DishStub from "./backend/DishStub";
@@ -33,14 +33,22 @@ class App extends React.Component {
       },
       selectedDishes: [],
       showAddressPopup: true,
+      userAddress: "",
     };
   }
 
-  handleAddressPrompt() {
+  handleAddressPrompt = (address) => {
     this.setState({
-      showAddressPopup: !this.state.showAddressPopup
+      showAddressPopup: !this.state.showAddressPopup,
+      userAddress: address,
     });
-  }
+  };
+
+  handleAddressChange = (address) => {
+    this.setState({
+      userAddress: address,
+    });
+  };
 
   handleSelectRestaurant = (restaurant) => {
     this.setState(
@@ -92,13 +100,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.showAddressPopup ? <AddressPrompt closeAddressPopup={this.handleAddressPrompt.bind(this)}/> : null}
+        {this.state.showAddressPopup ? (
+          <AddressPrompt closeAddressPopup={this.handleAddressPrompt} />
+        ) : null}
         <NavigationBar
           handleWalletBudgetChange={this.handleWalletBudgetChange}
           handleBackButtonClick={this.handleBackButtonClick}
+          handleAddressChange={this.handleAddressChange}
           userState={this.state.userState}
           restaurantName={this.state.selectedRestaurant.restaurantName}
           walletRemaining={this.state.walletRemaining}
+          userAddress={this.state.userAddress}
         />
 
         <div className="Main__Container">
