@@ -93,7 +93,7 @@ class App extends React.Component {
 
         <div className="Main__Container">
           
-          <Sidebar/>
+          <Category/>
           <div className="MainList__Container">
             {this.state.userState === DISH_SELECTION
               ? this.renderDishList()
