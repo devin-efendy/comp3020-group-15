@@ -32,7 +32,7 @@ class App extends React.Component {
         restaurantName: "",
         restaurantLogo: "",
         deliveryTime: "",
-        deliveryFee: -1,
+        deliveryFee: 0,
         review: -1,
       },
       selectedDishes: [],
@@ -61,12 +61,13 @@ class App extends React.Component {
       walletRemaining: this.state.walletRemaining - dish.price,
       selectedDishes: [...this.state.selectedDishes, dish],
     });
+    //we need to add the dish name and the prize to the total cart
   };
 
   handleBackButtonClick = () => {
     this.setState({
       userState: RESTAURANT_SELECTION,
-      selectedRestaurant: "",
+      //selectedRestaurant: "",
     });
   };
 
@@ -76,6 +77,7 @@ class App extends React.Component {
       walletRemaining: value - this.state.totalPrice,
     });
   };
+
 
   render() {
     
@@ -91,7 +93,7 @@ class App extends React.Component {
 
         <div className="Main__Container">
           
-          <Category/>
+          <Sidebar/>
           <div className="MainList__Container">
             {this.state.userState === DISH_SELECTION
               ? this.renderDishList()
@@ -99,7 +101,10 @@ class App extends React.Component {
           </div>
         </div>
 
-        <Cart />
+        <Cart 
+          selectedRestaurant = {this.state.selectedRestaurant}
+          selectedDishes = {this.state.selectedDishes}
+        />
       </div>
     );
   }
