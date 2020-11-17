@@ -8,6 +8,8 @@ import Cart from "./components/Cart";
 import Sidebar from "./components/Sidebar";
 import Restaurant from "./components/Restaurant";
 import Dish from "./components/Dish";
+import AddressPrompt from "./components/AddressPrompt";
+
 import RestaurantStub from "./backend/RestaurantStub";
 import DishStub from "./backend/DishStub";
 
@@ -36,14 +38,34 @@ class App extends React.Component {
         review: -1,
       },
       selectedDishes: [],
+      showAddressPopup: true,
+      userAddress: "",
     };
   }
 
-  handleSelectRestaurant = (restaurant) => {
+  handleAddressPrompt = (address) => {
     this.setState({
-      selectedRestaurant: restaurant,
-      userState: DISH_SELECTION,
+      showAddressPopup: !this.state.showAddressPopup,
+      userAddress: address,
     });
+  };
+
+  handleAddressChange = (address) => {
+    this.setState({
+      userAddress: address,
+    });
+  };
+
+  handleSelectRestaurant = (restaurant) => {
+    this.setState(
+      {
+        selectedRestaurant: restaurant,
+        userState: DISH_SELECTION,
+      },
+      () => {
+        window.scrollTo(0, 0);
+      }
+    );
   };
 
   handleSelectDish = (dish) => {
@@ -65,10 +87,14 @@ class App extends React.Component {
   };
 
   handleBackButtonClick = () => {
-    this.setState({
-      userState: RESTAURANT_SELECTION,
-      //selectedRestaurant: "",
-    });
+    this.setState(
+      {
+        userState: RESTAURANT_SELECTION,
+      },
+      () => {
+        window.scrollTo(0, 0);
+      }
+    );
   };
 
   handleWalletBudgetChange = (value) => {
@@ -83,17 +109,22 @@ class App extends React.Component {
     
     return (
       <div className="App">
+        {this.state.showAddressPopup ? (
+          <AddressPrompt closeAddressPopup={this.handleAddressPrompt} />
+        ) : null}
         <NavigationBar
           handleWalletBudgetChange={this.handleWalletBudgetChange}
           handleBackButtonClick={this.handleBackButtonClick}
+          handleAddressChange={this.handleAddressChange}
           userState={this.state.userState}
           restaurantName={this.state.selectedRestaurant.restaurantName}
           walletRemaining={this.state.walletRemaining}
+          userAddress={this.state.userAddress}
         />
 
         <div className="Main__Container">
           
-          <Category/>
+          <Sidebar/>
           <div className="MainList__Container">
             {this.state.userState === DISH_SELECTION
               ? this.renderDishList()
@@ -135,12 +166,20 @@ class App extends React.Component {
       );
     });
 
+    let count = 0;
+
     return dishList.map((dish) => {
+      dish.dishPhoto =
+        process.env.PUBLIC_URL + `/assets/dish/dish-${count}.jpg`;
+      count = (count + 1) % 7;
       return (
         <Dish
           dishObj={dish}
           handleSelectDish={this.handleSelectDish}
-          isWithinBudget={this.state.walletRemaining >= dish.price}
+          isWithinBudget={
+            this.state.walletUserBudget == 0 ||
+            this.state.walletRemaining >= dish.price
+          }
         />
       );
     });
