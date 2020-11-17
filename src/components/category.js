@@ -66,8 +66,9 @@ class Category extends Component {
     }
 
     render() {
+        //<div style={{paddingTop:"75px",position:"fixed",height:"195%"}}>
         return (
-            <div style={{paddingTop:"25px",position:"fixed",height:"195%"}}>
+            <div>
                 {this.state.categories.map(category => {
                     return (
                         <SubCategory
