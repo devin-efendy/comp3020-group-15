@@ -1,14 +1,6 @@
 import React from "react";
 import "../css/Dish.css";
 
-const foodLogoList = [
-  "fas fa-drumstick-bite fa-5x",
-  // "fas fa-seedling fa-5x",
-  // "fas fa-hamburger fa-5x",
-  // "fas fa-pizza-slice fa-5x",
-  // "fas fa-pepper-hot fa-5x",
-];
-
 class Dish extends React.Component {
   render() {
     const dish = this.props.dishObj;

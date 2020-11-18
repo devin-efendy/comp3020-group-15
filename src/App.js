@@ -1,11 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import "./css/App.css";
 
 import NavigationBar from "./components/NavigationBar";
 import Cart from "./components/Cart";
-import Sidebar from "./components/Sidebar";
 import Restaurant from "./components/Restaurant";
 import Dish from "./components/Dish";
 import AddressPrompt from "./components/AddressPrompt";

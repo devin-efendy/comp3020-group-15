@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import '../css/SubCategory.css';
 class SubCategory extends Component {
     render() {
-        const style={
-            float: "left"
-        }
         return (
             <React.Fragment>
                 <button type="button" className={this.props.category.className}
