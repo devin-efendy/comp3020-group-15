@@ -1,0 +1,6 @@
+.categories{
+    border: solid green 2px;
+    float: left;
+    clear: none;
+    width: 250px;
+};

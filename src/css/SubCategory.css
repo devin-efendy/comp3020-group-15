@@ -1,0 +1,23 @@
+/*This is for a button*/
+.redButton {
+  font-size: 40px !important;
+  color: #ffffff !important;
+  background-color: red;
+  border: 2px solid white !important;
+  width: 120%;
+  height: 66%;
+}
+.blackButton {
+  font-size: 40px !important;
+  color: #ffffff !important;
+  background-color: black;
+  border: 2px solid white !important;
+  width: 120%;
+  height: 66%;
+}
+
+.left { 
+    display:flex; 
+    justify-content:flex-end; 
+    align-items:left;  
+} 

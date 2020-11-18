@@ -12,6 +12,7 @@ import AddressPrompt from "./components/AddressPrompt";
 
 import RestaurantStub from "./backend/RestaurantStub";
 import DishStub from "./backend/DishStub";
+import Category from "./components/Category";
 
 const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
 const DISH_SELECTION = "DISH_SELECTION";
@@ -112,18 +113,22 @@ class App extends React.Component {
           walletRemaining={this.state.walletRemaining}
           userAddress={this.state.userAddress}
         />
-
+        <Category/>
         <div className="Main__Container">
-          <Sidebar />
+          
 
           <div className="MainList__Container">
             {this.state.userState === DISH_SELECTION
               ? this.renderDishList()
               : this.renderRestaurantList()}
           </div>
+
         </div>
 
-        <Cart />
+        <Cart 
+          selectedRestaurant = {this.state.selectedRestaurant}
+          selectedDishes = {this.state.selectedDishes}
+        />
       </div>
     );
   }
