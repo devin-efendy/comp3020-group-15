@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import SubCategory from "./SubCategory";
+import "../css/SubCategory.css"
 class Category extends Component {
-    redColor = "btn btn-danger";
-    blackColor = "btn btn-dark";
+    //redColor = "btn btn-danger";
+    //blackColor = "btn btn-dark";
+    RED_BUTTON="redButton";
+    BLACK_BUTTON="blackButton"
     state = {
         categories: [
-            { id: 1, content: "Near you", btnColor: this.redColor },
-            { id: 2, content: "Pizza", btnColor: this.redColor },
-            { id: 3, content: "Chicken", btnColor: this.redColor },
-            { id: 4, content: "Burgers", btnColor: this.redColor },
-            { id: 5, content: "Sushi", btnColor: this.redColor },
-            { id: 6, content: "Wings", btnColor: this.redColor },
-            { id: 7, content: "Chinese", btnColor: this.redColor }
+            { id: 1, content: "Near you", className: this.RED_BUTTON },
+            { id: 2, content: "Pizza", className: this.RED_BUTTON },
+            { id: 3, content: "Chicken", className: this.RED_BUTTON },
+            { id: 4, content: "Burgers", className: this.RED_BUTTON },
+            { id: 5, content: "Sushi", className: this.RED_BUTTON },
+            { id: 6, content: "Wings", className: this.RED_BUTTON },
+            { id: 7, content: "Chinese", className: this.RED_BUTTON }
         ],
     };
     category={
@@ -55,20 +58,20 @@ class Category extends Component {
     handleColor = (id) => {
         const resetColor = () => {
             const categories = [...this.state.categories];
-            categories.map(category => category.btnColor = this.redColor);
+            categories.map(category => category.className = this.RED_BUTTON);
             this.setState({ categories: categories });
         }
         resetColor();
         const categories = [...this.state.categories];
         //we changed the specific id button
-        categories[id - 1].btnColor = this.blackColor;
+        categories[id - 1].className = this.BLACK_BUTTON;
         this.setState({ categories: categories });
     }
 
     render() {
-        //<div style={{paddingTop:"75px",position:"fixed",height:"195%"}}>
         return (
-            <div>
+            
+            <div style={{paddingTop:"100px",position:"fixed",height:"16.5%"}}>
                 {this.state.categories.map(category => {
                     return (
                         <SubCategory

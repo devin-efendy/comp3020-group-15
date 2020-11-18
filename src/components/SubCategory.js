@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import '../css/SubCategory.css';
 class SubCategory extends Component {
     render() {
+        const style={
+            float: "left"
+        }
         return (
             <React.Fragment>
-                <button type="button" className={this.props.category.btnColor}
+                <button type="button" className={this.props.category.className}
                     id={this.props.category.id}         
                     onClick={() => {
                         this.props.onClick(this.props.category);

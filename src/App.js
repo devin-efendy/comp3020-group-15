@@ -12,12 +12,7 @@ import AddressPrompt from "./components/AddressPrompt";
 
 import RestaurantStub from "./backend/RestaurantStub";
 import DishStub from "./backend/DishStub";
-
 import Category from "./components/Category";
-import "./backend/RestaurantStub";//{ RestaurantStub } from 
-import "./backend/DishStub";//{ DishStub } from 
-import "./css/Category.css";
-
 
 const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
 const DISH_SELECTION = "DISH_SELECTION";
@@ -34,7 +29,7 @@ class App extends React.Component {
         restaurantName: "",
         restaurantLogo: "",
         deliveryTime: "",
-        deliveryFee: 0,
+        deliveryFee: -1,
         review: -1,
       },
       selectedDishes: [],
@@ -83,7 +78,6 @@ class App extends React.Component {
       walletRemaining: this.state.walletRemaining - dish.price,
       selectedDishes: [...this.state.selectedDishes, dish],
     });
-    //we need to add the dish name and the prize to the total cart
   };
 
   handleBackButtonClick = () => {
@@ -104,9 +98,7 @@ class App extends React.Component {
     });
   };
 
-
   render() {
-    
     return (
       <div className="App">
         {this.state.showAddressPopup ? (
@@ -121,13 +113,16 @@ class App extends React.Component {
           walletRemaining={this.state.walletRemaining}
           userAddress={this.state.userAddress}
         />
-
+        <Category/>
         <div className="Main__Container">
+          
+
           <div className="MainList__Container">
             {this.state.userState === DISH_SELECTION
               ? this.renderDishList()
               : this.renderRestaurantList()}
           </div>
+
         </div>
 
         <Cart 

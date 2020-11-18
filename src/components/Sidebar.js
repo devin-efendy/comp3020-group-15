@@ -1,4 +1,4 @@
-import React, { Children, Component } from "react";
+import React, { Component } from "react";
 import "../css/Sidebar.css";
 
 class Sidebar extends Component {
@@ -17,8 +17,6 @@ class Sidebar extends Component {
           <li>category-4</li>
           <li>category-5</li>
           <li>category-6</li>
-         
-          
         </ul>
       </div>
     );

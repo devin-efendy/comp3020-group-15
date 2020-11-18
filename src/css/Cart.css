@@ -23,9 +23,6 @@
 }
 
 .cartSection {
-  border: white 2px solid;
-  color: white;
-  font-weight: bold;
   width: 40%;
   text-align: left;
 }
@@ -33,4 +30,3 @@
 .cartList {
   list-style-type: none;
 }
-
