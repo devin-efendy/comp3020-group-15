@@ -4,11 +4,11 @@ import "../css/Restaurant.css";
 class Restaurant extends React.Component {
   render() {
     const restaurant = this.props.restaurantObj;
-
     return (
       <div
         className="restaurants"
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           this.props.handleSelectRestaurant(restaurant);
         }}
       >
@@ -50,11 +50,11 @@ class Restaurant extends React.Component {
     let stars = [];
 
     for (let i = 0; i < n; i++) {
-      stars.push(<i class="fas fa-star fa-1x" />);
+      stars.push(<i className="fas fa-star fa-1x" />);
     }
 
     for (let i = 0; i < 5 - n; i++) {
-      stars.push(<i class="far fa-star fa-1x" />);
+      stars.push(<i className="far fa-star fa-1x" />);
     }
 
     return <div>{stars}</div>;

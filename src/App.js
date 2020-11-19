@@ -33,6 +33,7 @@ class App extends React.Component {
       selectedDishes: [],
       showAddressPopup: true,
       userAddress: "",
+      backButtonAlert: true,
     };
   }
 
@@ -61,7 +62,7 @@ class App extends React.Component {
     );
   };
 
-  handleSelectDish = (dish) => {
+  handleSelectDish = (dish, callback = null) => {
     /**
      * When the user select a dish do the following:
      * 1. Add the price of the dish to the total price.
@@ -71,22 +72,65 @@ class App extends React.Component {
      * @param {*} dish the selected dish
      */
 
-    this.setState({
-      totalPrice: this.state.totalPrice + dish.price,
-      walletRemaining: this.state.walletRemaining - dish.price,
-      selectedDishes: [...this.state.selectedDishes, dish],
-    });
+    const sumPrice = dish.price * dish.quantity;
+
+    if (
+      this.state.walletUserBudget == 0 ||
+      sumPrice <= this.state.walletRemaining
+    ) {
+      this.setState(
+        {
+          totalPrice: this.state.totalPrice + sumPrice,
+          walletRemaining: this.state.walletRemaining - sumPrice,
+          selectedDishes: [...this.state.selectedDishes, dish],
+        },
+        () => {
+          const bodyHTML = document.getElementsByTagName("body")[0];
+          bodyHTML.style.paddingRight = `0px`;
+
+          callback();
+        }
+      );
+    } else {
+      alert(
+        `Oops! Looks like you are out of budget. You have $${this.state.walletRemaining} remaining.`
+      );
+    }
   };
 
   handleBackButtonClick = () => {
-    this.setState(
-      {
-        userState: RESTAURANT_SELECTION,
-      },
-      () => {
-        window.scrollTo(0, 0);
+    if (this.state.backButtonAlert) {
+      const goBack = window.confirm(
+        'Going back to Restaurant selection will remove your Cart from this restaurant. Click "OK" to proceed'
+      );
+
+      if (goBack) {
+        this.setState(
+          {
+            userState: RESTAURANT_SELECTION,
+            walletRemaining: this.state.walletUserBudget,
+            totalPrice: 0,
+            selectedDishes: [],
+            backButtonAlert: false,
+          },
+          () => {
+            window.scrollTo(0, 0);
+          }
+        );
       }
-    );
+    } else {
+      this.setState(
+        {
+          userState: RESTAURANT_SELECTION,
+          walletRemaining: this.state.walletUserBudget,
+          totalPrice: 0,
+          selectedDishes: [],
+        },
+        () => {
+          window.scrollTo(0, 0);
+        }
+      );
+    }
   };
 
   handleWalletBudgetChange = (value) => {
@@ -111,21 +155,18 @@ class App extends React.Component {
           walletRemaining={this.state.walletRemaining}
           userAddress={this.state.userAddress}
         />
-        <Category/>
+        {/* <Category /> */}
         <div className="Main__Container">
-          
-
-          <div className="MainList__Container">
+          <ul className="MainList__Container">
             {this.state.userState === DISH_SELECTION
               ? this.renderDishList()
               : this.renderRestaurantList()}
-          </div>
-
+          </ul>
         </div>
 
-        <Cart 
-          selectedRestaurant = {this.state.selectedRestaurant}
-          selectedDishes = {this.state.selectedDishes}
+        <Cart
+          selectedRestaurant={this.state.selectedRestaurant}
+          selectedDishes={this.state.selectedDishes}
         />
       </div>
     );
@@ -137,12 +178,15 @@ class App extends React.Component {
   renderRestaurantList = () => {
     const restaurantList = RestaurantStub;
 
-    return restaurantList.map((restaurant) => {
+    return restaurantList.map((restaurant, index) => {
+      console.log(index);
       return (
-        <Restaurant
-          restaurantObj={restaurant}
-          handleSelectRestaurant={this.handleSelectRestaurant}
-        />
+        <li key={index}>
+          <Restaurant
+            restaurantObj={restaurant}
+            handleSelectRestaurant={this.handleSelectRestaurant}
+          />
+        </li>
       );
     });
   };
@@ -159,19 +203,21 @@ class App extends React.Component {
 
     let count = 0;
 
-    return dishList.map((dish) => {
+    return dishList.map((dish, index) => {
       dish.dishPhoto =
         process.env.PUBLIC_URL + `/assets/dish/dish-${count}.jpg`;
       count = (count + 1) % 7;
       return (
-        <Dish
-          dishObj={dish}
-          handleSelectDish={this.handleSelectDish}
-          isWithinBudget={
-            this.state.walletUserBudget == 0 ||
-            this.state.walletRemaining >= dish.price
-          }
-        />
+        <li key={index}>
+          <Dish
+            dishObj={dish}
+            handleSelectDish={this.handleSelectDish}
+            isWithinBudget={
+              this.state.walletUserBudget == 0 ||
+              this.state.walletRemaining >= dish.price
+            }
+          />
+        </li>
       );
     });
   };
