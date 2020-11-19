@@ -31,6 +31,7 @@ class NavigationBar extends Component {
       <div className="headerResponsiveContainer">
         <div className="headerContainer">
           <button
+            key={0}
             className={`
               ${
                 this.props.userState === "DISH_SELECTION"
@@ -42,7 +43,7 @@ class NavigationBar extends Component {
               this.props.handleBackButtonClick();
             }}
           >
-            <i class="fa fa-chevron-left" aria-hidden="true" />
+            <i className="fa fa-chevron-left" aria-hidden="true" />
             <span>back</span>
           </button>
 
@@ -54,7 +55,7 @@ class NavigationBar extends Component {
           <div className="headerGroup_AlignRight">
             {/* User Address*/}
             <div className="userAddress">
-              <i class="fas fa-house-user"></i>
+              <i className="fas fa-house-user"></i>
               <input
                 className="navInput"
                 type="text"
@@ -73,7 +74,7 @@ class NavigationBar extends Component {
 
             {/* Wallet */}
             <div className="wallet">
-              <i class="fa fa-credit-card" aria-hidden="true" />
+              <i className="fa fa-credit-card" aria-hidden="true" />
               <span>wallet</span>
             </div>
 
@@ -112,9 +113,24 @@ class NavigationBar extends Component {
               </div>
             </div>
 
+            <button
+              className="walletHelp"
+              onClick={() => {
+                const str =
+                  "Welcome to our Wallet feature!\n\n" +
+                  "Wallet can help you budget your order to not overspend. By reminding you how much money left that you can spend.\n\n" +
+                  "You can specify what's your budget inside the 'Budget' box and we will calculate how much left that you can spend in 'Remaning' box.\n\n" +
+                  "When you are out of budget. Simply increase your budget or remove some items from your cart.\n\n" +
+                  "If you want to disable the Wallet feature, you can empty the 'Budget' box.";
+                alert(str);
+              }}
+            >
+              <i className="far fa-question-circle"></i>
+            </button>
+
             {/* Cart button */}
             <button className="headerButton">
-              <i class="fas fa-shopping-bag"></i>
+              <i className="fas fa-shopping-bag"></i>
               <span>cart</span>
             </button>
           </div>

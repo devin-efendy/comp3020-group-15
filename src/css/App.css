@@ -27,3 +27,7 @@
   flex-direction: column;
   margin: 1rem 4rem;
 }
+
+li {
+  list-style: none;
+}
