@@ -29,17 +29,17 @@ If you are using yarn do `yarn start` instead.
 
 # To-Do
 
-- [ ] Components structure
+- [x] Components structure
 
-- [ ] Address modal
+- [x] Address modal
 
-- [ ] Template
+- [x] Template
 
-- [ ] List of restaurant and menu
-  - [ ] Individual restaurant and menu
+- [x] List of restaurant and menu
+  - [x] Individual restaurant and menu
   
-- [ ] Sidebar category
+- [x] Sidebar category
 
-- [ ] Cart
+- [x] Cart
 
 - [ ] Checkout page
