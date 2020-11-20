@@ -155,7 +155,7 @@ class App extends React.Component {
           walletRemaining={this.state.walletRemaining}
           userAddress={this.state.userAddress}
         />
-        {/* <Category /> */}
+        <Category />
         <div className="Main__Container">
           <ul className="MainList__Container">
             {this.state.userState === DISH_SELECTION
