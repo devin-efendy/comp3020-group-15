@@ -32,6 +32,7 @@ const toppings = [
 ];
 
 class DishCustomization extends React.Component {
+  orderedDishes=[];
   constructor() {
     super();
     this.state = {
@@ -62,11 +63,14 @@ class DishCustomization extends React.Component {
     }
   };
 
+  
+
   handleAddToCart = () => {
     const dishObj = this.props.dishObj;
     dishObj.quantity = this.state.quantity;
     dishObj.customization = this.state.customizationList;
     this.props.handleAddToCart(dishObj);
+    console.log("dish quanitity: "+dishObj.quantity);
   };
 
   render() {

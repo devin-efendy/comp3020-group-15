@@ -5,18 +5,12 @@ import "../backend/RestaurantStub.js";
 import RestaurantStub from "../backend/RestaurantStub";
 
 class Cart extends Component {
-  visitedRestaurant = [];
-  orderedDishes = [];
-
-  currentDishSize = 0;
   subTotal = 0;
   deliveryCharge = 0;
   tax = 0;
   tip = 0;
   total = 0;
-
-
-
+  orderedDishes=[];
   constructor() {
     super();
 
@@ -41,14 +35,13 @@ class Cart extends Component {
       });
     }
   };
-
-  //I modify this a little bit
   renderDish(type) {
-    const list = this.orderedDishes.map((dish) => {
+    const list = this.props.selectedDishes.map((dish) => {
       return (
-        <li>
+        (<li>
           {type === "dish" ? (<p>{dish.dishName + "(x" + dish.quantity + ")"}</p>) : (<p>{"price: "}{dish.price * dish.quantity}{" $"}</p>)}
-        </li>);
+        </li>)
+        );
     });
     return list;
   }
@@ -61,56 +54,9 @@ class Cart extends Component {
     this.tip = 0;
     this.total = 0;
   }
-  //get dish quantity
-  dishQuantity() {
-    if (this.props.selectedDishes.length === 0) {
-      console.log("in dishQuantity(), no dish to update");
-      return;
-    }
-    //there is a new dish added
-    if (this.currentDishSize !== this.props.selectedDishes.length) {
-      //check if we already have a dish in the ordered dishes.
-      let length = this.props.selectedDishes.length;
-      let existed = false;
-      this.orderedDishes.filter(dish => {
-        if (dish.dishName === this.props.selectedDishes[length - 1].dishName) {
-          dish.quantity++;
-          this.currentDishSize++;
-          existed = true;
-          console.log(this.orderedDishes);
-        }
-      });
-      //we don't have that dish in the list, add it up
-      if (!existed) {
-        this.orderedDishes.push(
-          {
-            dishName: this.props.selectedDishes[length - 1].dishName
-            , quantity: 1
-            , price: this.props.selectedDishes[length - 1].price
-            , restaurantName: this.props.selectedDishes[length - 1].restaurantName
-          }
-        );
-        console.log(this.orderedDishes);
-        this.currentDishSize++;
-      }
-    }
-  }
-
   //get delivery fee
   deliveryFee() {
-    let restaurantName="";
-    for(let i=0;i<this.orderedDishes.length;i++){
-      restaurantName=this.orderedDishes[i].restaurantName;
-      //restaurant OBJECT
-      let restaurant=RestaurantStub.find(restaurant=>restaurant.restaurantName==restaurantName);
-      //if the restaurantName is not in the list
-      if(!this.visitedRestaurant.includes(restaurant)){
-        this.visitedRestaurant.push(restaurant);
-      }
-    }
-    for(let i=0;i<this.visitedRestaurant.length;i++){
-      this.deliveryCharge+=this.visitedRestaurant[i].deliveryFee;
-    }
+    this.deliveryCharge=this.props.selectedRestaurant.deliveryFee;
   }
   //get the taxes
   taxes() {
@@ -119,20 +65,21 @@ class Cart extends Component {
   totalCost() {
     this.total = this.subTotal + this.deliveryCharge + this.tax + this.tip;
   }
+  subTotalCost(){
+    this.props.selectedDishes.map((dish)=>{
+      this.subTotal+=dish.price*dish.quantity;
+    })
+  }
 
   //get all the fees
   bill() {
-    //get the quantity of the dishes
-    if (this.props.selectedDishes.length !== this.currentDishSize) {
-      this.dishQuantity();
-    }
+    console.log(this.props.selectedDishes);
+    
     this.resetBill();
     //get the delivery fee
     this.deliveryFee();
     //get the total cost of only dishes 
-    this.props.selectedDishes.map((dish) => {
-      this.subTotal += dish.price;
-    })
+    this.subTotalCost();
     //get the taxes
     this.taxes();
     //get the total cost
@@ -142,9 +89,10 @@ class Cart extends Component {
   render() {
     const { cartItems } = this.props;
     return (
-
+      //{}
       <div>
         {this.bill()}
+        
         {this.state.showCart ? (
           <div className="cart">
             <button className="cartButton close" onClick={this.openOrClose}>
