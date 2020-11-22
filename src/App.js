@@ -75,8 +75,8 @@ class App extends React.Component {
     const sumPrice = dish.price * dish.quantity;
 
     if (
-      this.state.walletUserBudget == 0 ||
-      sumPrice <= this.state.walletRemaining
+      (this.state.walletUserBudget == 0 ||
+        sumPrice <= this.state.walletRemaining)
     ) {
       this.setState(
         {
@@ -91,7 +91,9 @@ class App extends React.Component {
           callback();
         }
       );
-    } else {
+    }
+
+    else {
       alert(
         `Oops! Looks like you are out of budget. You have $${this.state.walletRemaining} remaining.`
       );
@@ -167,6 +169,7 @@ class App extends React.Component {
         <Cart
           selectedRestaurant={this.state.selectedRestaurant}
           selectedDishes={this.state.selectedDishes}
+          userState={this.state.userState}
         />
       </div>
     );

@@ -4,13 +4,16 @@ import "../css/Cart.css";
 import "../backend/RestaurantStub.js";
 import RestaurantStub from "../backend/RestaurantStub";
 
+const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
+const DISH_SELECTION = "DISH_SELECTION";
 class Cart extends Component {
+   
   subTotal = 0;
   deliveryCharge = 0;
   tax = 0;
   tip = 0;
   total = 0;
-  orderedDishes=[];
+  orderedDishes = [];
   constructor() {
     super();
 
@@ -35,13 +38,29 @@ class Cart extends Component {
       });
     }
   };
+  updateQuantity() {
+    //deep copy the selected Dishes
+    this.orderedDishes = [...this.props.selectedDishes];
+    for (let i = 0; i < this.orderedDishes.length; i++) {
+      for (let j = i + 1; j < this.orderedDishes.length; j++) {
+        //if we have 2 dishes with the same name
+        if (this.orderedDishes[i].dishName === this.orderedDishes[j].dishName) {
+          this.orderedDishes[i].quantity += this.orderedDishes[j].quantity;
+          //set j quantity to 0
+          this.orderedDishes[j].quantity = 0;
+        }
+      }
+    }
+  }
   renderDish(type) {
-    const list = this.props.selectedDishes.map((dish) => {
-      return (
-        (<li>
-          {type === "dish" ? (<p>{dish.dishName + "(x" + dish.quantity + ")"}</p>) : (<p>{"price: "}{dish.price * dish.quantity}{" $"}</p>)}
-        </li>)
+    const list = this.orderedDishes.map((dish) => {
+      if (dish.quantity > 0) {
+        return (
+          <li>
+            {type === "dish" ? (<p>{dish.dishName + "(x" + dish.quantity + ")"}</p>) : (<p>{"price: "}{dish.price * dish.quantity}{" $"}</p>)}
+          </li>
         );
+      }
     });
     return list;
   }
@@ -56,7 +75,10 @@ class Cart extends Component {
   }
   //get delivery fee
   deliveryFee() {
-    this.deliveryCharge=this.props.selectedRestaurant.deliveryFee;
+    if(this.props.userState===DISH_SELECTION)
+      this.deliveryCharge = this.props.selectedRestaurant.deliveryFee;
+    else
+      this.deliveryCharge=0;
   }
   //get the taxes
   taxes() {
@@ -64,17 +86,18 @@ class Cart extends Component {
   }
   totalCost() {
     this.total = this.subTotal + this.deliveryCharge + this.tax + this.tip;
+    this.total=Number.parseFloat(this.total).toFixed(2);
   }
-  subTotalCost(){
-    this.props.selectedDishes.map((dish)=>{
-      this.subTotal+=dish.price*dish.quantity;
+  subTotalCost() {
+    this.orderedDishes.map((dish) => {
+      this.subTotal += dish.price * dish.quantity;
     })
   }
-
   //get all the fees
   bill() {
-    console.log(this.props.selectedDishes);
-    
+    //update quantity to merge dishes first
+    this.updateQuantity();
+    //reset all accounts
     this.resetBill();
     //get the delivery fee
     this.deliveryFee();
@@ -92,7 +115,7 @@ class Cart extends Component {
       //{}
       <div>
         {this.bill()}
-        
+
         {this.state.showCart ? (
           <div className="cart">
             <button className="cartButton close" onClick={this.openOrClose}>

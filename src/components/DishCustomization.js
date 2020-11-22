@@ -32,7 +32,6 @@ const toppings = [
 ];
 
 class DishCustomization extends React.Component {
-  orderedDishes=[];
   constructor() {
     super();
     this.state = {
@@ -63,14 +62,29 @@ class DishCustomization extends React.Component {
     }
   };
 
-  
+  deepCopyDish(dish){
+    let a={
+      category:dish.category,
+      dishName:dish.dishName,
+      dishPhoto:dish.dishPhoto,
+      description:dish.description,
+      review:dish.review,
+      price:dish.price,
+      restaurantName:dish.restaurantName,
+    }
+    return a;
+  }
 
   handleAddToCart = () => {
-    const dishObj = this.props.dishObj;
+    /*const dishObj = this.props.dishObj;
     dishObj.quantity = this.state.quantity;
     dishObj.customization = this.state.customizationList;
+    this.props.handleAddToCart(dishObj);*/
+    let dishObj = this.deepCopyDish(this.props.dishObj);
+    dishObj.quantity = this.state.quantity;
+    dishObj.customization = this.state.customizationList;
+    //dishObj.add=true;
     this.props.handleAddToCart(dishObj);
-    console.log("dish quanitity: "+dishObj.quantity);
   };
 
   render() {
