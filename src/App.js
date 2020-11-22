@@ -11,9 +11,28 @@ import AddressPrompt from "./components/AddressPrompt";
 import RestaurantStub from "./backend/RestaurantStub";
 import DishStub from "./backend/DishStub";
 import Category from "./components/Category";
+import SubCategory from "./components/SubCategory";
 
 const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
 const DISH_SELECTION = "DISH_SELECTION";
+
+const restaurantCategoryText = [
+  "Near you",
+  "Pizza",
+  "Burger",
+  "Sushi",
+  "Wings",
+  "Chinese",
+];
+
+const dishCategoryText = [
+  "All",
+  "Combo",
+  "Appetizer",
+  "Entree",
+  "Dessert",
+  "Drink",
+];
 
 class App extends React.Component {
   constructor() {
@@ -31,9 +50,12 @@ class App extends React.Component {
         review: -1,
       },
       selectedDishes: [],
-      showAddressPopup: true,
+      showAddressPopup: false,
       userAddress: "",
       backButtonAlert: true,
+      // Category state
+      selectedRestaurantCategory: "near you",
+      selectedDishCategory: "all",
     };
   }
 
@@ -140,6 +162,18 @@ class App extends React.Component {
     });
   };
 
+  handleCategorySelection = (category) => {
+    if (this.state.userState === RESTAURANT_SELECTION) {
+      this.setState({
+        selectedRestaurantCategory: category.toLowerCase(),
+      });
+    } else {
+      this.setState({
+        selectedDishCategory: category.toLowerCase(),
+      });
+    }
+  };
+
   render() {
     return (
       <div className="App">
@@ -155,15 +189,18 @@ class App extends React.Component {
           walletRemaining={this.state.walletRemaining}
           userAddress={this.state.userAddress}
         />
-        {/* <Category /> */}
+
         <div className="Main__Container">
+          <div className="CategoryMainContainer">
+            <h3 className="categoryHeading">CATEGORY:</h3>
+            {this.renderCategory()}
+          </div>
           <ul className="MainList__Container">
             {this.state.userState === DISH_SELECTION
               ? this.renderDishList()
               : this.renderRestaurantList()}
           </ul>
         </div>
-
         <Cart
           selectedRestaurant={this.state.selectedRestaurant}
           selectedDishes={this.state.selectedDishes}
@@ -176,10 +213,20 @@ class App extends React.Component {
    * This function will render the list of Restaurants
    */
   renderRestaurantList = () => {
-    const restaurantList = RestaurantStub;
+    let restaurantList = RestaurantStub;
+
+    if (this.state.selectedRestaurantCategory !== "near you") {
+      restaurantList = RestaurantStub.filter((restaurant) => {
+        if (
+          restaurant.category.toLowerCase() ===
+          this.state.selectedRestaurantCategory
+        ) {
+          return restaurant;
+        }
+      });
+    }
 
     return restaurantList.map((restaurant, index) => {
-      console.log(index);
       return (
         <li key={index}>
           <Restaurant
@@ -195,11 +242,19 @@ class App extends React.Component {
    * This function will render the list of Dishes from the selectedRestaurant
    */
   renderDishList = () => {
-    const dishList = DishStub.filter((dish) => {
+    let dishList = DishStub.filter((dish) => {
       return (
         dish.restaurantName === this.state.selectedRestaurant.restaurantName
       );
     });
+
+    if (this.state.selectedDishCategory !== "all") {
+      dishList = dishList.filter((dish) => {
+        if (dish.category.toLowerCase() === this.state.selectedDishCategory) {
+          return dish;
+        }
+      });
+    }
 
     let count = 0;
 
@@ -220,6 +275,36 @@ class App extends React.Component {
         </li>
       );
     });
+  };
+
+  renderCategory = () => {
+    const categoryList =
+      this.state.userState === RESTAURANT_SELECTION
+        ? restaurantCategoryText
+        : dishCategoryText;
+
+    const renderList = categoryList.map((category) => {
+      let isSelected;
+
+      if (this.state.userState === RESTAURANT_SELECTION) {
+        isSelected =
+          this.state.selectedRestaurantCategory === category.toLowerCase();
+      } else {
+        isSelected = this.state.selectedDishCategory === category.toLowerCase();
+      }
+
+      return (
+        <li key={category}>
+          <SubCategory
+            handleCategorySelection={this.handleCategorySelection}
+            value={category}
+            isSelected={isSelected}
+          />
+        </li>
+      );
+    });
+
+    return <Category>{renderList}</Category>;
   };
 }
 

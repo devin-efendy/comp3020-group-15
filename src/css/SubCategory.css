@@ -1,23 +1,37 @@
-/*This is for a button*/
-.redButton {
-  font-size: 40px !important;
-  color: #ffffff !important;
-  background-color: red;
-  border: 2px solid white !important;
-  width: 120%;
-  height: 66%;
-}
-.blackButton {
-  font-size: 40px !important;
-  color: #ffffff !important;
-  background-color: black;
-  border: 2px solid white !important;
-  width: 120%;
-  height: 66%;
+.categoryButton {
+  width: 100%;
+  height: 50px;
+
+  background: white;
+  border-width: 0px;
+  border-radius: 5px;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.65);
+
+  margin: 0.25rem 0;
+
+  /* text-align: left; */
 }
 
-.left { 
-    display:flex; 
-    justify-content:flex-end; 
-    align-items:left;  
-} 
+.categoryButton:hover {
+  background-color: #1e88e534;
+  color: rgba(0, 0, 0, 1);
+
+  /* text-align: left; */
+}
+
+.categoryButton:focus {
+  outline: none;
+}
+
+.categoryButton:active {
+  background-color: #1e88e56b;
+}
+
+.selectedCategory {
+  color: rgba(0, 0, 0, 1);
+  background-color: #1e88e534;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}

@@ -1,6 +1,15 @@
-.categories{
-    border: solid green 2px;
-    float: left;
-    clear: none;
-    width: 250px;
-};
+.categoryContainer {
+  background-color: white;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  width: 200px;
+  padding: 1rem;
+}
+
+.categoryHeading {
+  width: 100%;
+  text-align: left;
+
+  margin-bottom: 1rem;
+}
