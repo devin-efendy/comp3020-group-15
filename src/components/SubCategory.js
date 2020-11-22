@@ -1,21 +1,19 @@
 import React, { Component } from "react";
-import '../css/SubCategory.css';
+import "../css/SubCategory.css";
 class SubCategory extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <button type="button" className={this.props.category.className}
-                    id={this.props.category.id}         
-                    onClick={() => {
-                        this.props.onClick(this.props.category);
-                        this.props.onColorChange(this.props.category.id);
-                    }}>
-                    {this.props.category.content}
-                </button>
-                <br/>
-            </React.Fragment>
-
-        );
-    }
+  render() {
+    return (
+      <button
+        className={`categoryButton ${
+          this.props.isSelected ? "selectedCategory" : ""
+        }`}
+        onClick={() => {
+          this.props.handleCategorySelection(this.props.value);
+        }}
+      >
+        {this.props.value.toLowerCase()}
+      </button>
+    );
+  }
 }
 export default SubCategory;
