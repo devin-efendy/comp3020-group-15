@@ -6,7 +6,7 @@ class Restaurant extends React.Component {
     const restaurant = this.props.restaurantObj;
     return (
       <div
-        className="restaurants"
+        className="restaurants fadeAnimationLayer"
         onClick={(e) => {
           e.preventDefault();
           this.props.handleSelectRestaurant(restaurant);

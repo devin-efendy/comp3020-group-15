@@ -18,6 +18,9 @@ class NavigationBar extends Component {
           return "Select a Restaurant";
         case "DISH_SELECTION":
           return `${this.props.restaurantName}, choose your dish`;
+        case "SHOW_CART":
+          return `${this.props.restaurantName}, choose your dish`;
+
         default:
           break;
       }
@@ -34,9 +37,10 @@ class NavigationBar extends Component {
             key={0}
             className={`
               ${
-                this.props.userState === "DISH_SELECTION"
-                  ? "headerButton"
-                  : "disableButton"
+                this.props.userState === "DISH_SELECTION" ||
+                this.props.userState === "SHOW_CART"
+                  ? "backButton materialButton"
+                  : "hideButton"
               }
             `}
             onClick={() => {
@@ -129,9 +133,24 @@ class NavigationBar extends Component {
             </button>
 
             {/* Cart button */}
-            <button className="headerButton">
+            <button
+              className={`cartButton materialButton ${
+                this.props.userState === "RESTAURANT_SELECTION"
+                  ? "disabledButton"
+                  : ""
+              }`}
+              onClick={() => {
+                if (this.props.userState === "DISH_SELECTION") {
+                  this.props.handleCartClick();
+                }
+              }}
+            >
               <i className="fas fa-shopping-bag"></i>
-              <span>cart</span>
+
+              <span>
+                cart
+                {this.props.totalItems > 0 ? ` (${this.props.totalItems})` : ""}
+              </span>
             </button>
           </div>
         </div>

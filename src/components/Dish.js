@@ -27,6 +27,9 @@ class Dish extends React.Component {
         <div
           className="dish"
           onClick={() => {
+            if (!this.props.isWithinBudget) {
+              return;
+            }
             this.setState({ showCustomization: true });
 
             const documentWidth = document.documentElement.clientWidth;
