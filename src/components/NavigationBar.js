@@ -7,7 +7,7 @@ class NavigationBar extends Component {
     super(props);
     this.state = {
       address: "",
-      budget: 0,
+      budget: "",
     };
   }
 
@@ -90,7 +90,13 @@ class NavigationBar extends Component {
                 navInput
                 walletInput
               `}
-                  type="text"
+                  type="number"
+                  value={this.state.budget === 0 ? "" : this.state.budget}
+                  onChange={(event) => {
+                    this.setState({
+                      budget: event.target.value,
+                    });
+                  }}
                   onBlur={(event) => {
                     this.setState({
                       budget: event.target.value,
@@ -123,13 +129,25 @@ class NavigationBar extends Component {
                 const str =
                   "Welcome to our Wallet feature!\n\n" +
                   "Wallet can help you budget your order to not overspend. By reminding you how much money left that you can spend.\n\n" +
-                  "You can specify what's your budget inside the 'Budget' box and we will calculate how much left that you can spend in 'Remaning' box.\n\n" +
+                  "You can specify what's your budget inside the 'Budget' box and then press \"Enter\". We will calculate how much left that you can spend in 'Remaning' box.\n\n" +
                   "When you are out of budget. Simply increase your budget or remove some items from your cart.\n\n" +
-                  "If you want to disable the Wallet feature, you can empty the 'Budget' box.";
+                  "If you want to disable the Wallet feature or reset your budget, you can click the reset button.";
                 alert(str);
               }}
             >
               <i className="far fa-question-circle"></i>
+            </button>
+
+            <button
+              className="walletReset"
+              onClick={() => {
+                this.setState({
+                  budget: 0,
+                });
+                this.props.handletWalletReset();
+              }}
+            >
+              <i className="fas fa-undo-alt"></i>
             </button>
 
             {/* Cart button */}

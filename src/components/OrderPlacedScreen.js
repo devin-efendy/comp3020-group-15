@@ -10,7 +10,7 @@ class OrderPlacedScreen extends Component {
     return (
       <div className="orderPlacedScreen">
         Thank you for your order! <br />
-        Your order have been placed.
+        Your order has been placed.
       </div>
     );
   }
