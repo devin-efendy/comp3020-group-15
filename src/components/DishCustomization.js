@@ -71,10 +71,10 @@ class DishCustomization extends React.Component {
     dish.id = dishIds++;
     this.props.handleAddToCart(dish);
 
-    this.setState({
-      customizationList: [],
-      quantity: 1,
-    });
+    // this.setState({
+    //   customizationList: [],
+    //   quantity: 0,
+    // });
   };
 
   render() {

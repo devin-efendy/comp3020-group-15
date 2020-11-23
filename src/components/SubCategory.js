@@ -11,7 +11,7 @@ class SubCategory extends Component {
           this.props.handleCategorySelection(this.props.value);
         }}
       >
-        {this.props.value.toLowerCase()}
+        {this.props.value}
       </button>
     );
   }

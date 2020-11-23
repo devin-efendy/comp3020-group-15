@@ -88,7 +88,12 @@
   margin-left: auto;
 }
 
-.navInput[type="text"] {
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.navInput {
   padding: 7px 10px;
   /* width: 100%; */
   height: 20px;
@@ -100,12 +105,12 @@
   font-size: 16px;
 }
 
-.navInput[type="text"]:hover {
+.navInput:hover {
   background-color: #1e88e534;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.navInput[type="text"]:focus {
+.navInput:focus {
   background-color: rgb(245, 245, 245);
   border: 1px solid #1e88e5;
   outline: none;
@@ -119,11 +124,12 @@
 }
 
 .walletInput {
-  width: 30px;
+  width: 40px;
   text-align: center;
+  padding: 7px 5px;
 }
 
-.navInput[type="text"]::placeholder {
+.navInput::placeholder {
   font-size: 14px;
 }
 
@@ -148,7 +154,7 @@
 }
 
 .walletHelp {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   border-width: 0;
   background: none;
   font-size: 18px;
@@ -158,6 +164,31 @@
 
 .walletHelp:active {
   color: #333333;
+  outline: none;
+}
+
+.walletHelp:focus {
+  color: #333333;
+  outline: none;
+}
+
+.walletReset {
+  margin-right: 1rem;
+  border-width: 0;
+  background: none;
+  font-size: 18px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.walletReset:active {
+  color: #333333;
+  outline: none;
+}
+
+.walletReset:focus {
+  color: #333333;
+  outline: none;
 }
 
 .wallet i {
@@ -178,7 +209,7 @@
 
 .walletRemaining {
   background-color: #fafafa;
-  padding: 7px 10px;
+  padding: 7px 5px;
   /* width: 100%; */
   height: 20px;
   margin-right: 0.5rem;
@@ -188,8 +219,10 @@
 
   font-size: 16px;
 
-  width: 30px;
+  width: 40px;
   height: 20px;
+
+  text-align: center;
 
   text-align: center;
 }
@@ -226,7 +259,8 @@
   color: black;
 }
 
-.cartButton i, .backButton i {
+.cartButton i,
+.backButton i {
   margin-right: 0.5rem;
 }
 

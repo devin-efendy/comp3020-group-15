@@ -191,6 +191,7 @@ class App extends React.Component {
           userState: RESTAURANT_SELECTION,
           walletRemaining: this.state.walletUserBudget,
           totalPrice: 0,
+          totalItems: 0,
           selectedDishes: [],
         },
         () => {
@@ -201,9 +202,32 @@ class App extends React.Component {
   };
 
   handleWalletBudgetChange = (value) => {
+    console.log(value)
+    if(value === "") {
+      return
+    }
+    this.setState(
+      {
+        walletUserBudget: value,
+        walletRemaining: value - this.state.totalPrice,
+      },
+      () => {
+        if (
+          // this.state.walletUserBudget !== 0 &&
+          this.state.walletRemaining < 0
+        ) {
+          alert(
+            "Looks like the items in your cart is not within the budget that you specified. Don't worry! You still can place order with your current Cart. \n\nTo add another items, you can increase your budget or remove some items from your cart. Also, if you don't want to use the budget feature, you can click the Reset button."
+          );
+        }
+      }
+    );
+  };
+
+  handletWalletReset = () => {
     this.setState({
-      walletUserBudget: value,
-      walletRemaining: value - this.state.totalPrice,
+      walletUserBudget: 0,
+      walletRemaining: 0,
     });
   };
 
@@ -246,6 +270,7 @@ class App extends React.Component {
         ) : null}
         <NavigationBar
           handleWalletBudgetChange={this.handleWalletBudgetChange}
+          handletWalletReset={this.handletWalletReset}
           handleBackButtonClick={this.handleBackButtonClick}
           handleAddressChange={this.handleAddressChange}
           handleCartClick={this.handleCartClick}
