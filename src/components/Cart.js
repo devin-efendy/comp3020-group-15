@@ -5,180 +5,147 @@ import "../backend/RestaurantStub.js";
 import RestaurantStub from "../backend/RestaurantStub";
 
 class Cart extends Component {
-  visitedRestaurant = [];
-  orderedDishes = [];
-
-  currentDishSize = 0;
-  subTotal = 0;
-  deliveryCharge = 0;
-  tax = 0;
-  tip = 0;
-  total = 0;
-
-
-
   constructor() {
     super();
 
     this.state = {
       showCart: false,
     };
-
-    this.openOrClose = this.openOrClose.bind(this);
-    this.bill = this.bill.bind(this);
   }
 
-  openOrClose = (event) => {
-    event.preventDefault();
-
-    if (this.state.showCart) {
-      this.setState({
-        showCart: false,
-      });
-    } else {
-      this.setState({
-        showCart: true,
-      });
-    }
+  componentDidMount = () => {
+    document.body.style.overflow = "hidden";
   };
 
-  //I modify this a little bit
-  renderDish(type) {
-    const list = this.orderedDishes.map((dish) => {
-      return (
-        <li>
-          {type === "dish" ? (<p>{dish.dishName + "(x" + dish.quantity + ")"}</p>) : (<p>{"price: "}{dish.price * dish.quantity}{" $"}</p>)}
-        </li>);
-    });
-    return list;
-  }
+  componentWillUnmount = () => {
+    document.body.style.overflow = "unset";
+  };
 
-  //this is applied whenever we open the cart
-  resetBill() {
-    this.subTotal = 0;
-    this.tax = 0;
-    this.deliveryCharge = 0;
-    this.tip = 0;
-    this.total = 0;
-  }
-  //get dish quantity
-  dishQuantity() {
-    if (this.props.selectedDishes.length === 0) {
-      console.log("in dishQuantity(), no dish to update");
-      return;
-    }
-    //there is a new dish added
-    if (this.currentDishSize !== this.props.selectedDishes.length) {
-      //check if we already have a dish in the ordered dishes.
-      let length = this.props.selectedDishes.length;
-      let existed = false;
-      this.orderedDishes.filter(dish => {
-        if (dish.dishName === this.props.selectedDishes[length - 1].dishName) {
-          dish.quantity++;
-          this.currentDishSize++;
-          existed = true;
-          console.log(this.orderedDishes);
-        }
-      });
-      //we don't have that dish in the list, add it up
-      if (!existed) {
-        this.orderedDishes.push(
-          {
-            dishName: this.props.selectedDishes[length - 1].dishName
-            , quantity: 1
-            , price: this.props.selectedDishes[length - 1].price
-            , restaurantName: this.props.selectedDishes[length - 1].restaurantName
-          }
-        );
-        console.log(this.orderedDishes);
-        this.currentDishSize++;
-      }
-    }
-  }
+  calculateFees = () => {
+    const { selectedRestaurant, totalPrice } = this.props;
+    const tax = totalPrice * 0.12;
+    const deliveryFee =
+      selectedRestaurant === undefined ? 0 : selectedRestaurant.deliveryFee;
 
-  //get delivery fee
-  deliveryFee() {
-    let restaurantName="";
-    for(let i=0;i<this.orderedDishes.length;i++){
-      restaurantName=this.orderedDishes[i].restaurantName;
-      //restaurant OBJECT
-      let restaurant=RestaurantStub.find(restaurant=>restaurant.restaurantName==restaurantName);
-      //if the restaurantName is not in the list
-      if(!this.visitedRestaurant.includes(restaurant)){
-        this.visitedRestaurant.push(restaurant);
-      }
-    }
-    for(let i=0;i<this.visitedRestaurant.length;i++){
-      this.deliveryCharge+=this.visitedRestaurant[i].deliveryFee;
-    }
-  }
-  //get the taxes
-  taxes() {
-    this.tax = (this.subTotal + this.deliveryCharge) * 11 / 100;
-  }
-  totalCost() {
-    this.total = this.subTotal + this.deliveryCharge + this.tax + this.tip;
-  }
-
-  //get all the fees
-  bill() {
-    //get the quantity of the dishes
-    if (this.props.selectedDishes.length !== this.currentDishSize) {
-      this.dishQuantity();
-    }
-    this.resetBill();
-    //get the delivery fee
-    this.deliveryFee();
-    //get the total cost of only dishes 
-    this.props.selectedDishes.map((dish) => {
-      this.subTotal += dish.price;
-    })
-    //get the taxes
-    this.taxes();
-    //get the total cost
-    this.totalCost();
-  }
+    return {
+      deliveryFee: deliveryFee,
+      tax: tax,
+      subTotal: totalPrice,
+      total: totalPrice + tax + deliveryFee,
+    };
+  };
 
   render() {
-    const { cartItems } = this.props;
-    return (
+    const { cartItems, selectedRestaurant } = this.props;
+    const fees = this.calculateFees();
+    const emptyCart = cartItems.length === 0;
 
-      <div>
-        {this.bill()}
-        {this.state.showCart ? (
-          <div className="cart">
-            <button className="cartButton close" onClick={this.openOrClose}>
-              Close Cart
+    return (
+      <div className="appearAnimationLayer">
+        <div
+          className="overlay"
+          onClick={() => {
+            const bodyHTML = document.getElementsByTagName("body")[0];
+            bodyHTML.style.paddingRight = `0px`;
+
+            this.props.handleCloseCart();
+          }}
+        />
+        <div className="cartContainer">
+          <div className="cartHeader">
+            <h1>Cart</h1>
+            <button
+              className="circleButton materialButton"
+              onClick={() => {
+                const bodyHTML = document.getElementsByTagName("body")[0];
+                bodyHTML.style.paddingRight = `0px`;
+                this.props.handleCloseCart();
+              }}
+            >
+              <i class="fas fa-times"></i>
             </button>
-            <div className="cartSection">
-              <ul className="cartList">{this.renderDish("dish")}</ul>
+          </div>
+          <div className="cartItemsContainer">
+            {emptyCart
+              ? `Your cart is empty :(`
+              : this.renderCartItems(cartItems)}
+          </div>
+
+          <div className="cartSummaryContainer">
+            <div className="feesContainer">
+              <div className="cartSummaryItem">
+                <p>Sub-total: </p>{" "}
+                <p className="alignRight">${fees.subTotal.toFixed(2)}</p>
+              </div>
+              <div className="cartSummaryItem">
+                <p>Tax: </p>{" "}
+                <p className="alignRight">${fees.tax.toFixed(2)}</p>
+              </div>
+              <div className="cartSummaryItem">
+                <p>Delivery fee: </p>{" "}
+                <p className="alignRight">${fees.deliveryFee.toFixed(2)}</p>
+              </div>
+              <div className="cartSummaryItem totalPrice">
+                <p>Total: </p>
+                <p className="alignRight">${fees.total.toFixed(2)}</p>
+              </div>
             </div>
-            <div className="cartSection">
-              <ul className="cartList">{this.renderDish("price")}</ul>
-            </div>
-            <div className="cartSection">
-              <p>Subtotal</p>
-              <p>Delivery Charge</p>
-              <p>Taxes</p>
-              <p>Tip</p>
-              <p>Total</p>
-            </div>
-            <div className="cartSection">
-              <p>{this.subTotal}{" $"}</p>
-              <p>{this.deliveryCharge}{" $"}</p>
-              <p>{this.tax}{" $"}</p>
-              <p>{this.tip}{" $"}</p>
-              <p>{this.total}{" $"}</p>
+
+            <div className="restaurantSummaryContainer">
+              <h3>{selectedRestaurant.restaurantName}</h3>
+              <p>Delivery time: {selectedRestaurant.deliveryTime}</p>
+
+              <button
+                className={`placeOrderButton materialButton ${
+                  emptyCart ? "disabledButton" : ""
+                }`}
+                onClick={() => {
+                  if (!emptyCart) {
+                    const orderConfirmed = window.confirm(
+                      `To confirm and place your order click "OK".`
+                    );
+                    if (orderConfirmed) {
+                      this.props.handlePlaceOrder();
+                    }
+                  }
+                }}
+              >
+                PLACE ORDER
+              </button>
             </div>
           </div>
-        ) : (
-            <button className="cartButton open" onClick={this.openOrClose}>
-              Show Cart
-            </button>
-          )}
+        </div>
       </div>
     );
   }
+
+  renderCartItems = (cartItems) => {
+    return cartItems.map((dish) => {
+      const { dishName, quantity, price, customization } = dish;
+      return (
+        <div className="cartItemContainer">
+          <div className="cartItemHeader">
+            <h3>
+              {dishName}&nbsp;&nbsp;&nbsp;<b>{`x${quantity}`}</b>
+            </h3>
+
+            <div className="itemCustoms">{customization.join(", ")}</div>
+          </div>
+          <div className="cartItem__RightGroup">
+            <p>${price * quantity}</p>
+            <button
+              className={`circleButton materialButton removeButton`}
+              onClick={() => {
+                this.props.handleRemoveDish(dish);
+              }}
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      );
+    });
+  };
 }
 
 export default Cart;

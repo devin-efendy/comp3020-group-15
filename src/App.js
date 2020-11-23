@@ -1,6 +1,8 @@
 import React from "react";
 
 import "./css/App.css";
+import "./css/overlay.css";
+import "./css/button.css";
 
 import NavigationBar from "./components/NavigationBar";
 import Cart from "./components/Cart";
@@ -13,8 +15,12 @@ import DishStub from "./backend/DishStub";
 import Category from "./components/Category";
 import SubCategory from "./components/SubCategory";
 
+import OrderPlacedScreen from "./components/OrderPlacedScreen";
+
 const RESTAURANT_SELECTION = "RESTAURANT_SELECTION";
 const DISH_SELECTION = "DISH_SELECTION";
+const SHOW_CART = "SHOW_CART";
+const ORDER_PLACED = "ORDER_PLACED";
 
 const restaurantCategoryText = [
   "Near you",
@@ -40,6 +46,7 @@ class App extends React.Component {
     this.state = {
       userState: RESTAURANT_SELECTION,
       totalPrice: 0,
+      totalItems: 0,
       walletUserBudget: 0,
       walletRemaining: 0,
       selectedRestaurant: {
@@ -50,7 +57,7 @@ class App extends React.Component {
         review: -1,
       },
       selectedDishes: [],
-      showAddressPopup: false,
+      showAddressPopup: true,
       userAddress: "",
       backButtonAlert: true,
       // Category state
@@ -72,11 +79,31 @@ class App extends React.Component {
     });
   };
 
+  handleCartClick = () => {
+    const documentWidth = document.documentElement.clientWidth;
+    const windowWidth = window.innerWidth;
+    const scrollBarWidth = windowWidth - documentWidth;
+
+    const bodyHTML = document.getElementsByTagName("body")[0];
+    bodyHTML.style.paddingRight = `${scrollBarWidth}px`;
+
+    this.setState({
+      userState: SHOW_CART,
+    });
+  };
+
+  handleCloseCart = () => {
+    this.setState({
+      userState: DISH_SELECTION,
+    });
+  };
+
   handleSelectRestaurant = (restaurant) => {
     this.setState(
       {
         selectedRestaurant: restaurant,
         userState: DISH_SELECTION,
+        selectedDishCategory: "all",
       },
       () => {
         window.scrollTo(0, 0);
@@ -105,25 +132,42 @@ class App extends React.Component {
           totalPrice: this.state.totalPrice + sumPrice,
           walletRemaining: this.state.walletRemaining - sumPrice,
           selectedDishes: [...this.state.selectedDishes, dish],
+          totalItems: this.state.totalItems + dish.quantity,
         },
         () => {
           const bodyHTML = document.getElementsByTagName("body")[0];
           bodyHTML.style.paddingRight = `0px`;
 
           callback();
+          console.log(this.state.totalItems);
         }
       );
     } else {
       alert(
-        `Oops! Looks like you are out of budget. You have $${this.state.walletRemaining} remaining.`
+        `Oops! Looks like you are out of budget. The price of your selected item is $${sumPrice}. (You have $${this.state.walletRemaining} remaining)`
       );
     }
+  };
+
+  handleRemoveDish = (item) => {
+    const newSelectedDishes = this.state.selectedDishes.filter((dish) => {
+      return dish.id !== item.id;
+    });
+
+    const price = item.quantity * item.price;
+
+    this.setState({
+      selectedDishes: newSelectedDishes,
+      totalPrice: this.state.totalPrice - price,
+      walletRemaining: this.state.walletRemaining + price,
+      totalItems: this.state.totalItems - item.quantity,
+    });
   };
 
   handleBackButtonClick = () => {
     if (this.state.backButtonAlert) {
       const goBack = window.confirm(
-        'Going back to Restaurant selection will remove your Cart from this restaurant. Click "OK" to proceed'
+        'Going back to restaurant selection will remove items from your cart. Click "OK" to proceed'
       );
 
       if (goBack) {
@@ -132,6 +176,7 @@ class App extends React.Component {
             userState: RESTAURANT_SELECTION,
             walletRemaining: this.state.walletUserBudget,
             totalPrice: 0,
+            totalItems: 0,
             selectedDishes: [],
             backButtonAlert: false,
           },
@@ -167,16 +212,35 @@ class App extends React.Component {
       this.setState({
         selectedRestaurantCategory: category.toLowerCase(),
       });
-    } else {
+    } else if (this.state.userState === DISH_SELECTION) {
       this.setState({
         selectedDishCategory: category.toLowerCase(),
       });
     }
   };
 
+  handlePlaceOrder = () => {
+    this.setState({
+      userState: ORDER_PLACED,
+    });
+  };
+
   render() {
+    console.log(this.state.userState);
+    let renderList;
+
+    if (this.state.userState === RESTAURANT_SELECTION) {
+      renderList = (
+        <div className="fadeAnimationLayer">{this.renderRestaurantList()}</div>
+      );
+    } else {
+      renderList = (
+        <div className="fadeAnimationLayer">{this.renderDishList()}</div>
+      );
+    }
+
     return (
-      <div className="App">
+      <div className="App fadeAnimationLayer">
         {this.state.showAddressPopup ? (
           <AddressPrompt closeAddressPopup={this.handleAddressPrompt} />
         ) : null}
@@ -184,10 +248,12 @@ class App extends React.Component {
           handleWalletBudgetChange={this.handleWalletBudgetChange}
           handleBackButtonClick={this.handleBackButtonClick}
           handleAddressChange={this.handleAddressChange}
+          handleCartClick={this.handleCartClick}
           userState={this.state.userState}
           restaurantName={this.state.selectedRestaurant.restaurantName}
           walletRemaining={this.state.walletRemaining}
           userAddress={this.state.userAddress}
+          totalItems={this.state.totalItems}
         />
 
         <div className="Main__Container">
@@ -195,16 +261,23 @@ class App extends React.Component {
             <h3 className="categoryHeading">CATEGORY:</h3>
             {this.renderCategory()}
           </div>
-          <ul className="MainList__Container">
-            {this.state.userState === DISH_SELECTION
-              ? this.renderDishList()
-              : this.renderRestaurantList()}
-          </ul>
+          <ul className="MainList__Container">{renderList}</ul>
         </div>
-        <Cart
-          selectedRestaurant={this.state.selectedRestaurant}
-          selectedDishes={this.state.selectedDishes}
-        />
+        {this.state.userState === SHOW_CART && (
+          <Cart
+            selectedRestaurant={this.state.selectedRestaurant}
+            selectedDishes={this.state.selectedDishes}
+            handleCloseCart={this.handleCloseCart}
+            cartItems={this.state.selectedDishes}
+            handleRemoveDish={this.handleRemoveDish}
+            handlePlaceOrder={this.handlePlaceOrder}
+            totalPrice={this.state.totalPrice}
+          />
+        )}
+
+        {this.state.userState === ORDER_PLACED && (
+          <OrderPlacedScreen></OrderPlacedScreen>
+        )}
       </div>
     );
   }
@@ -263,7 +336,7 @@ class App extends React.Component {
         process.env.PUBLIC_URL + `/assets/dish/dish-${count}.jpg`;
       count = (count + 1) % 7;
       return (
-        <li key={index}>
+        <li key={index} className="fadeAnimationLayer">
           <Dish
             dishObj={dish}
             handleSelectDish={this.handleSelectDish}
@@ -289,7 +362,7 @@ class App extends React.Component {
       if (this.state.userState === RESTAURANT_SELECTION) {
         isSelected =
           this.state.selectedRestaurantCategory === category.toLowerCase();
-      } else {
+      } else if (this.state.userState === DISH_SELECTION) {
         isSelected = this.state.selectedDishCategory === category.toLowerCase();
       }
 

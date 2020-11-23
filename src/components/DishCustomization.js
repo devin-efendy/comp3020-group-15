@@ -31,6 +31,7 @@ const toppings = [
   },
 ];
 
+let dishIds = 0;
 class DishCustomization extends React.Component {
   constructor() {
     super();
@@ -63,10 +64,17 @@ class DishCustomization extends React.Component {
   };
 
   handleAddToCart = () => {
-    const dishObj = this.props.dishObj;
-    dishObj.quantity = this.state.quantity;
-    dishObj.customization = this.state.customizationList;
-    this.props.handleAddToCart(dishObj);
+    const dish = Object.assign({}, this.props.dishObj);
+
+    dish.quantity = this.state.quantity;
+    dish.customization = this.state.customizationList;
+    dish.id = dishIds++;
+    this.props.handleAddToCart(dish);
+
+    this.setState({
+      customizationList: [],
+      quantity: 0,
+    });
   };
 
   render() {
@@ -74,7 +82,7 @@ class DishCustomization extends React.Component {
     return (
       <div className="appearAnimationLayer">
         <div
-          className="dishOverlay"
+          className="overlay"
           onClick={() => {
             const bodyHTML = document.getElementsByTagName("body")[0];
             bodyHTML.style.paddingRight = `0px`;
@@ -104,17 +112,17 @@ class DishCustomization extends React.Component {
           <div className="optionGroup__Buttons">
             <div className="quantityGroup">
               <button
-                className="circleButton materialButton"
+                className={`circleButton materialButton ${this.state.quantity === 1 ? "disabledButton" : ""}`}
                 onClick={this.handleDecreaseQty}
               >
-                <span>-</span>
+                <i class="fas fa-minus"></i>
               </button>
               <p>{this.state.quantity}</p>
               <button
                 className="circleButton materialButton"
                 onClick={this.handleIncreaseQty}
               >
-                <span>+</span>
+                <i class="fas fa-plus"></i>
               </button>
             </div>
 
