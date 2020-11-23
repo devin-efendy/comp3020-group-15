@@ -57,7 +57,7 @@ class App extends React.Component {
         review: -1,
       },
       selectedDishes: [],
-      showAddressPopup: false,
+      showAddressPopup: true,
       userAddress: "",
       backButtonAlert: true,
       // Category state
@@ -176,6 +176,7 @@ class App extends React.Component {
             userState: RESTAURANT_SELECTION,
             walletRemaining: this.state.walletUserBudget,
             totalPrice: 0,
+            totalItems: 0,
             selectedDishes: [],
             backButtonAlert: false,
           },
