@@ -73,7 +73,7 @@ class DishCustomization extends React.Component {
 
     this.setState({
       customizationList: [],
-      quantity: 0,
+      quantity: 1,
     });
   };
 
