@@ -128,10 +128,10 @@ class NavigationBar extends Component {
               onClick={() => {
                 const str =
                   "Welcome to our Wallet feature!\n\n" +
-                  "Wallet can help you budget your order to not overspend. By reminding you how much money left that you can spend.\n\n" +
-                  "You can specify what's your budget inside the 'Budget' box and then press \"Enter\". We will calculate how much left that you can spend in 'Remaning' box.\n\n" +
-                  "When you are out of budget. Simply increase your budget or remove some items from your cart.\n\n" +
-                  "If you want to disable the Wallet feature or reset your budget, you can click the reset button.";
+                  "Wallet allows you to set a budget for your order. We take care of the math, letting you know how much money you have left to spend.\n\n" +
+                  "You can input your budget inside the 'Budget' box and then press \"Enter\". We will calculate how much you have left to spend in the 'Remaning' box.\n\n" +
+                  "When your wallet is empty, you can increase your budget or remove some items from your cart.\n\n" +
+                  "If you want to disable the Wallet feature or reset your budget, simply click the reset button.";
                 alert(str);
               }}
             >
