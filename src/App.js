@@ -167,7 +167,7 @@ class App extends React.Component {
   handleBackButtonClick = () => {
     if (this.state.backButtonAlert) {
       const goBack = window.confirm(
-        'Going back to restaurant selection will remove items from your cart. Click "OK" to proceed'
+        'Going back to restaurant selection will remove items from your cart. Click "OK" to proceed. (You will be notified once about this)'
       );
 
       if (goBack) {
